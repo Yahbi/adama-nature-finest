@@ -606,9 +606,9 @@ section[data-shopify]{position:relative;z-index:2}
    should be in view. The letterbox is the same near-black as the shots' own
    ground, so the seam does not read. */
 .pdp__media{position:sticky;top:calc(var(--header-h) + var(--sp-3));
-  aspect-ratio:4/5;background:#191510;overflow:hidden}
+  aspect-ratio:3/4;background:#191510;overflow:hidden}
 .pdp__shot{width:100%;height:100%;object-fit:contain;display:block}
-.pdp__badge{font-size:var(--step--1);letter-spacing:.06em;color:var(--clay);display:block;margin-bottom:var(--sp-2)}
+.pdp__badge{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 var(--sp-3)}
 
 .pdp__name{font-family:var(--display);font-size:var(--step-3);font-weight:400;line-height:var(--lh-tight);margin-bottom:var(--sp-2)}
 .pdp__price{font-size:var(--step-1);margin-bottom:var(--sp-3)}
@@ -616,7 +616,7 @@ section[data-shopify]{position:relative;z-index:2}
 /* the one-sentence descriptor — 17–35 words, the whole product in a breath */
 .pdp__descriptor{color:var(--ink-soft);line-height:var(--lh-body);max-width:46ch;margin-bottom:var(--sp-4)}
 /* The house answering a comparison against itself — set apart by a rule, not by colour. */
-.pdp__candour{margin:calc(var(--sp-4) * -1) 0 var(--sp-4);padding-left:var(--sp-3);border-left:1px solid var(--line);color:var(--ink-soft);font-size:var(--step--1);line-height:var(--lh-body);max-width:46ch;display:block}
+.pdp__candour{margin:var(--sp-4) 0;padding-left:var(--sp-3);border-left:1px solid var(--line);color:var(--ink-soft);font-size:var(--step--1);line-height:var(--lh-body);max-width:46ch;display:block}
 
 
 /* add to cart — dark near-black, full width, honest states */
