@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#23211C" />
 <title>ADAMA — Nature's finest · Botanical care for skin, body &amp; hair</title>
-<link rel="preload" as="image" href="assets/img/adama-hero-dunes-poster.webp?v=79" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/img/adama-hero-dunes-poster.webp?v=80" fetchpriority="high" />
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="Adama — Hebrew for earth. Quiet-luxury botanical formulations for skin, body and hair. Cruelty-free, named in full. From the earth, for the body." />
@@ -362,7 +362,10 @@ section[data-shopify]{position:relative;z-index:2}
 .ing__img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:0;margin-bottom:var(--sp-3);filter:saturate(.97) contrast(1.02);transition:transform 1.5s var(--ease)}
 .ing:hover .ing__img{transform:scale(1.015)}
 .ing h3{font-family:var(--display);font-size:var(--step-1);font-weight:400}
-.ing .lat{font-size:var(--step--1);letter-spacing:.02em;font-style:italic;color:var(--clay);margin-top:.2rem}
+.ing .lat{font-size:var(--step--1);letter-spacing:.02em;color:var(--clay);margin-top:.2rem}
+.ing .lat em{font-style:italic}
+.ing__to{display:inline-block;margin-top:var(--sp-2);font-size:var(--step--1);letter-spacing:.02em}
+.ingredients__more{margin-top:var(--sp-6);text-align:center;font-size:var(--step--1);letter-spacing:.02em}
 .ing p{color:var(--ink-soft);font-size:var(--step--1);margin-top:var(--sp-2);line-height:var(--lh-body)}
 
 /* RITUAL */
@@ -432,6 +435,8 @@ section[data-shopify]{position:relative;z-index:2}
    suppressed whenever a longer desc existed, so the canonical sentence never showed. */
 .pm__descriptor{color:var(--ink);line-height:var(--lh-body);font-size:var(--step-0);margin:0}
 .pm__desc{color:var(--ink-soft);line-height:var(--lh-body);font-size:var(--step--1);margin:0}
+/* The house answering a comparison against itself — set apart by a rule, not by colour. */
+.pm__candour{margin:var(--sp-3) 0 0;padding-left:var(--sp-3);border-left:1px solid var(--line);color:var(--ink-soft);font-size:var(--step--1);line-height:var(--lh-body)}
 .pm__block h4{font-family:var(--sans);font-size:var(--step--1);letter-spacing:.06em;font-weight:500;color:var(--clay);margin:0 0 .55rem}
 .pm__block p{color:var(--ink-soft);line-height:var(--lh-body);margin:0}
 .pm__key{display:flex;gap:1.15rem;align-items:center}
@@ -502,7 +507,7 @@ section[data-shopify]{position:relative;z-index:2}
 .value{border-top:1px solid var(--line);padding-top:var(--sp-3)}
 .value .k{font-family:var(--sans);font-size:var(--step-0);font-weight:500}
 .value .d{font-size:var(--step--1);color:var(--ink-soft);margin-top:.3rem;line-height:var(--lh-body)}
-.story__aside{background:#1B1A15 url("assets/img/nat-soil.webp?v=79") center/cover;border:1px solid var(--line);padding:clamp(2.2rem,4vw,3.8rem);position:relative;overflow:hidden;color:var(--paper);min-height:clamp(300px,32vw,420px);display:flex;flex-direction:column;justify-content:flex-end}
+.story__aside{background:#1B1A15 url("assets/img/nat-soil.webp?v=80") center/cover;border:1px solid var(--line);padding:clamp(2.2rem,4vw,3.8rem);position:relative;overflow:hidden;color:var(--paper);min-height:clamp(300px,32vw,420px);display:flex;flex-direction:column;justify-content:flex-end}
 .story__aside::before{content:"";position:absolute;inset:0;background:linear-gradient(165deg,rgba(20,17,12,.35),rgba(20,17,12,.85));z-index:1}
 /* The oversized אֲדָמָה watermark is gone: it set a word at 14% opacity as wallpaper, and it
    was the third time the page spelled the etymology out. Say it once, in the ethos. */
@@ -556,6 +561,7 @@ section[data-shopify]{position:relative;z-index:2}
 .cart__close{font-size:var(--step--1);letter-spacing:.02em}
 .cart__items{flex:1;overflow-y:auto;padding:.5rem var(--gutter)}
 .cart__empty{padding:3rem 0;text-align:center;color:var(--ink-faint)}
+.cart__emptynote{margin:.6rem auto var(--sp-4);max-width:26ch;font-size:var(--step--1);line-height:var(--lh-body)}
 .citem{display:grid;grid-template-columns:64px 1fr auto;gap:1rem;padding:1.3rem 0;border-bottom:1px solid var(--line-soft)}
 .citem__media{background:var(--panel);display:grid;place-items:center;padding:.4rem;overflow:hidden}
 .citem__media svg{height:56px}
@@ -700,8 +706,8 @@ section[data-shopify]{position:relative;z-index:2}
        TRUE 4K retained at 9.6 MB. Dunes are smooth gradients, so 4K costs almost nothing.
        Poster is frame 0, so there is no jump when playback starts. -->
   <video class="hero__video" autoplay muted loop playsinline preload="metadata"
-         poster="assets/img/adama-hero-dunes-poster.webp?v=79" aria-hidden="true">
-    <source src="assets/video/adama-hero-dunes.mp4?v=79" type="video/mp4" />
+         poster="assets/img/adama-hero-dunes-poster.webp?v=80" aria-hidden="true">
+    <source src="assets/video/adama-hero-dunes.mp4?v=80" type="video/mp4" />
   </video>
   <button class="vid-toggle" id="vidToggle" aria-pressed="false" aria-label="Pause background videos">Pause</button>
   <div class="hero__scrim"></div>
@@ -754,7 +760,7 @@ section[data-shopify]{position:relative;z-index:2}
      put to the owner against exactly that precedent and confirmed ON-BRAND. Do not remove
      it by appealing to that earlier note — the two were judged separately. -->
 <section class="film film--light" data-shopify="barefoot" aria-label="Barefoot on the earth">
-  <img class="px film__still" src="assets/img/campaign/adama-rite-15-forest-1600.webp?v=79" srcset="assets/img/campaign/adama-rite-15-forest-800.webp?v=79 800w, assets/img/campaign/adama-rite-15-forest-1600.webp?v=79 1600w" sizes="100vw" alt="Bare legs mid-step on a moss-covered boulder among ferns, low golden light through a summer wood" loading="lazy" decoding="async" width="1600" height="1067" />
+  <img class="px film__still" src="assets/img/campaign/adama-rite-15-forest-1600.webp?v=80" srcset="assets/img/campaign/adama-rite-15-forest-800.webp?v=80 800w, assets/img/campaign/adama-rite-15-forest-1600.webp?v=80 1600w" sizes="100vw" alt="Bare legs mid-step on a moss-covered boulder among ferns, low golden light through a summer wood" loading="lazy" decoding="async" width="1600" height="1067" />
   <div class="film__scrim"></div>
   <div class="film__inner">
     <span class="eyebrow">From the earth</span>
@@ -767,7 +773,7 @@ section[data-shopify]{position:relative;z-index:2}
 <section class="section featured" id="featured" data-shopify="featured-product">
   <div class="wrap" data-featured="face-oil">
     <div class="featured__media rv">
-      <img class="featured__img px" src="assets/img/shots/adama-face-oil.webp?v=79" alt="Replenishing Facial Oil — a matte sage-olive stoneware dropper bottle with a pale-oak cap and tone-on-tone debossed label, on a raw travertine block in warm morning light" loading="lazy" width="1200" height="1600" />
+      <img class="featured__img px" src="assets/img/shots/adama-face-oil.webp?v=80" alt="Replenishing Facial Oil — a matte sage-olive stoneware dropper bottle with a pale-oak cap and tone-on-tone debossed label, on a raw travertine block in warm morning light" loading="lazy" width="1200" height="1600" />
     </div>
     <div>
       <span class="eyebrow featured__eyebrow rv">The hero · Face</span>
@@ -807,15 +813,15 @@ section[data-shopify]{position:relative;z-index:2}
     </div>
     <div class="earth-grid">
       <figure class="setting-tile rv">
-        <img class="px" src="assets/img/shots/adama-still-rosehip-600.webp?v=79" srcset="assets/img/shots/adama-still-rosehip-320.webp?v=79 320w, assets/img/shots/adama-still-rosehip-600.webp?v=79 600w, assets/img/shots/adama-still-rosehip.webp?v=79 1200w" sizes="(max-width:760px) 92vw, 31vw" alt="ADAMA Pure Rosehip Seed Oil in a taupe speckled stoneware dropper bottle with a wood collar, on raw travertine in warm morning light" loading="lazy" decoding="async" width="1200" height="1600" />
+        <img class="px" src="assets/img/shots/adama-still-rosehip-600.webp?v=80" srcset="assets/img/shots/adama-still-rosehip-320.webp?v=80 320w, assets/img/shots/adama-still-rosehip-600.webp?v=80 600w, assets/img/shots/adama-still-rosehip.webp?v=80 1200w" sizes="(max-width:760px) 92vw, 31vw" alt="ADAMA Pure Rosehip Seed Oil in a taupe speckled stoneware dropper bottle with a wood collar, on raw travertine in warm morning light" loading="lazy" decoding="async" width="1200" height="1600" />
         <figcaption>Rosehip · <em>Rosa canina</em></figcaption>
       </figure>
       <figure class="setting-tile rv rv-d1">
-        <img class="px" src="assets/img/shots/adama-still-shikakai-600.webp?v=79" srcset="assets/img/shots/adama-still-shikakai-320.webp?v=79 320w, assets/img/shots/adama-still-shikakai-600.webp?v=79 600w, assets/img/shots/adama-still-shikakai.webp?v=79 1200w" sizes="(max-width:760px) 92vw, 31vw" alt="ADAMA Amla &amp; Shikakai Hair Oil in a clay-terracotta stoneware dropper bottle with a wood collar, on raw travertine" loading="lazy" decoding="async" width="1200" height="1600" />
+        <img class="px" src="assets/img/shots/adama-still-shikakai-600.webp?v=80" srcset="assets/img/shots/adama-still-shikakai-320.webp?v=80 320w, assets/img/shots/adama-still-shikakai-600.webp?v=80 600w, assets/img/shots/adama-still-shikakai.webp?v=80 1200w" sizes="(max-width:760px) 92vw, 31vw" alt="ADAMA Amla &amp; Shikakai Hair Oil in a clay-terracotta stoneware dropper bottle with a wood collar, on raw travertine" loading="lazy" decoding="async" width="1200" height="1600" />
         <figcaption>Amla &amp; Shikakai · the pre-wash rite</figcaption>
       </figure>
       <figure class="setting-tile rv rv-d2">
-        <img class="px" src="assets/img/shots/adama-still-trio-600.webp?v=79" srcset="assets/img/shots/adama-still-trio-320.webp?v=79 320w, assets/img/shots/adama-still-trio-600.webp?v=79 600w, assets/img/shots/adama-still-trio.webp?v=79 1200w" sizes="(max-width:760px) 92vw, 31vw" alt="Three matte sage-olive stoneware skincare vessels grouped on a raw travertine block in warm morning light" loading="lazy" decoding="async" width="1200" height="1600" />
+        <img class="px" src="assets/img/shots/adama-still-trio-600.webp?v=80" srcset="assets/img/shots/adama-still-trio-320.webp?v=80 320w, assets/img/shots/adama-still-trio-600.webp?v=80 600w, assets/img/shots/adama-still-trio.webp?v=80 1200w" sizes="(max-width:760px) 92vw, 31vw" alt="Three matte sage-olive stoneware skincare vessels grouped on a raw travertine block in warm morning light" loading="lazy" decoding="async" width="1200" height="1600" />
         <figcaption>The skin ritual, together</figcaption>
       </figure>
     </div>
@@ -851,14 +857,17 @@ section[data-shopify]{position:relative;z-index:2}
      41 MB. At 1080p CRF 33 with a 4.2 Mbps cap it is 6.9 MB, in line with the sibling bands.
      Sits after the 32-product grid so it reads as a breath before the ritual sets. -->
 <section class="film film--light" data-shopify="jungle-falls" aria-label="Tropical falls">
-  <video class="px" muted loop playsinline preload="none" poster="assets/img/adama-jungle-falls-poster.webp?v=79" aria-hidden="true">
-    <source src="assets/video/adama-jungle-falls.mp4?v=79" type="video/mp4" />
+  <video class="px" muted loop playsinline preload="none" poster="assets/img/adama-jungle-falls-poster.webp?v=80" aria-hidden="true">
+    <source src="assets/video/adama-jungle-falls.mp4?v=80" type="video/mp4" />
   </video>
   <div class="film__scrim"></div>
   <div class="film__inner">
     <span class="eyebrow">Water</span>
     <h2 class="rv rv-d1">Where it all runs clear.</h2>
-    <p class="rv rv-d2">Falling water, wet stone and green canopy — the source every formulation is trying to keep faith with.</p>
+    <!-- Caption rewritten 2026-07-24: it named "green canopy", the exact register the
+         ethos note above rejects as off-brand for an earth house. The clip stays (owner
+         request); the copy now reads to water and stone, which is what the band is for. -->
+    <p class="rv rv-d2">Falling water over wet stone — the source every formulation is trying to keep faith with.</p>
   </div>
 </section>
 
@@ -877,8 +886,8 @@ section[data-shopify]{position:relative;z-index:2}
 <!-- SECTION: stone-formation film ==================================== -->
 <section class="film" data-shopify="film-stone" aria-label="Ancient earth">
   <!-- Stone formation — aerial canyon (re-added per request) -->
-  <video class="px" muted loop playsinline preload="none" poster="assets/img/adama-earth-strata-poster.jpg?v=79" aria-hidden="true">
-    <source src="assets/video/adama-earth-strata.mp4?v=79" type="video/mp4" />
+  <video class="px" muted loop playsinline preload="none" poster="assets/img/adama-earth-strata-poster.jpg?v=80" aria-hidden="true">
+    <source src="assets/video/adama-earth-strata.mp4?v=80" type="video/mp4" />
   </video>
   <div class="film__scrim"></div>
   <div class="film__inner">
@@ -895,6 +904,7 @@ section[data-shopify]{position:relative;z-index:2}
       <p class="lede">No mystery blends. Every formula leads with plants you can pronounce — chosen for what they do, not how they sound.</p>
     </div>
     <div class="ingredients__grid" id="ingredients-grid"><!-- injected --></div>
+    <p class="ingredients__more rv"><a class="link-underline" href="botanicals.html">All thirty-two engraved plates</a></p>
   </div>
 </section>
 
@@ -906,17 +916,17 @@ section[data-shopify]{position:relative;z-index:2}
       <h2>Four unhurried steps.</h2>
     </div>
     <div class="ritual__grid">
-      <div class="step rv"><h3>Cleanse</h3><p>Begin with the Calming Cleanser — lift the day without stripping the skin's barrier.</p></div>
-      <div class="step rv rv-d1"><h3>Treat</h3><p>Press in the Prebiotic Jelly Serum to support a balanced, resilient microbiome.</p></div>
-      <div class="step rv rv-d2"><h3>Hydrate</h3><p>Mist and moisturise — botanical water and light creams to hold moisture in.</p></div>
-      <div class="step rv rv-d3"><h3>Seal</h3><p>Finish with the Replenishing Facial Oil to lock in radiance overnight.</p></div>
+      <div class="step rv"><h3>Cleanse</h3><p>Begin with the <a class="link-underline" href="products/sens-cleanser.html">Calming Cleanser</a> — lift the day without stripping the skin's barrier.</p></div>
+      <div class="step rv rv-d1"><h3>Treat</h3><p>Press in the <a class="link-underline" href="products/jelly-serum.html">Prebiotic Jelly Serum</a> to support a balanced, resilient microbiome.</p></div>
+      <div class="step rv rv-d2"><h3>Hydrate</h3><p>Mist and moisturise — the <a class="link-underline" href="products/face-mist.html">Hydrating Face Mist</a>, then the <a class="link-underline" href="products/sens-moist.html">Soothing Moisturiser</a>.</p></div>
+      <div class="step rv rv-d3"><h3>Seal</h3><p>Finish with the <a class="link-underline" href="products/face-oil.html">Replenishing Facial Oil</a> to lock in radiance overnight.</p></div>
     </div>
   </div>
 </section>
 
 <!-- SECTION: raw materials (full-bleed editorial nature band) ========= -->
 <section class="film film--light" data-shopify="raw-materials" aria-label="Raw materials">
-  <img class="px film__still" src="assets/img/shots/adama-raw-materials-1600.webp?v=79" srcset="assets/img/shots/adama-raw-materials-800.webp?v=79 800w, assets/img/shots/adama-raw-materials-1600.webp?v=79 1600w" sizes="100vw" alt="Raw botanical materials — dried rosehips, seeds, eucalyptus and mineral clay on warm travertine in morning light" loading="lazy" decoding="async" width="1600" height="900" />
+  <img class="px film__still" src="assets/img/shots/adama-raw-materials-1600.webp?v=80" srcset="assets/img/shots/adama-raw-materials-800.webp?v=80 800w, assets/img/shots/adama-raw-materials-1600.webp?v=80 1600w" sizes="100vw" alt="Raw botanical materials — dried rosehips, seeds, eucalyptus and mineral clay on warm travertine in morning light" loading="lazy" decoding="async" width="1600" height="900" />
   <div class="film__scrim"></div>
   <div class="film__inner">
     <span class="eyebrow">Raw materials</span>
@@ -935,19 +945,19 @@ section[data-shopify]{position:relative;z-index:2}
     </div>
     <div class="setting-grid">
       <figure class="setting-tile rv">
-        <img class="px" src="assets/img/shots/adama-two-600.webp?v=79" srcset="assets/img/shots/adama-two-320.webp?v=79 320w, assets/img/shots/adama-two-600.webp?v=79 600w, assets/img/shots/adama-two.webp?v=79 1200w" sizes="(max-width:760px) 92vw,(max-width:1080px) 46vw, 23vw" alt="Two people with wet skin standing close in dappled jungle light" loading="lazy" decoding="async" width="1200" height="1600" />
+        <img class="px" src="assets/img/shots/adama-two-600.webp?v=80" srcset="assets/img/shots/adama-two-320.webp?v=80 320w, assets/img/shots/adama-two-600.webp?v=80 600w, assets/img/shots/adama-two.webp?v=80 1200w" sizes="(max-width:760px) 92vw,(max-width:1080px) 46vw, 23vw" alt="Two people with wet skin standing close in dappled jungle light" loading="lazy" decoding="async" width="1200" height="1600" />
         <figcaption>Shared, unhurried</figcaption>
       </figure>
       <figure class="setting-tile rv rv-d1">
-        <img class="px" src="assets/img/shots/adama-setting-tub-600.webp?v=79" srcset="assets/img/shots/adama-setting-tub-320.webp?v=79 320w, assets/img/shots/adama-setting-tub-600.webp?v=79 600w, assets/img/shots/adama-setting-tub.webp?v=79 1200w" sizes="(max-width:760px) 92vw,(max-width:1080px) 46vw, 23vw" alt="Fresh water running over a broad green leaf onto dark earth and roots" loading="lazy" decoding="async" width="1200" height="1600" />
+        <img class="px" src="assets/img/shots/adama-setting-tub-600.webp?v=80" srcset="assets/img/shots/adama-setting-tub-320.webp?v=80 320w, assets/img/shots/adama-setting-tub-600.webp?v=80 600w, assets/img/shots/adama-setting-tub.webp?v=80 1200w" sizes="(max-width:760px) 92vw,(max-width:1080px) 46vw, 23vw" alt="Fresh water running over a broad green leaf onto dark earth and roots" loading="lazy" decoding="async" width="1200" height="1600" />
         <figcaption>Water, returned</figcaption>
       </figure>
       <figure class="setting-tile rv rv-d2">
-        <img class="px" src="assets/img/shots/adama-setting-shower-600.webp?v=79" srcset="assets/img/shots/adama-setting-shower-320.webp?v=79 320w, assets/img/shots/adama-setting-shower-600.webp?v=79 600w, assets/img/shots/adama-setting-shower.webp?v=79 1200w" sizes="(max-width:760px) 92vw,(max-width:1080px) 46vw, 23vw" alt="Cupped hands holding a green botanical lather under falling water among ferns" loading="lazy" decoding="async" width="1200" height="1600" />
+        <img class="px" src="assets/img/shots/adama-setting-shower-600.webp?v=80" srcset="assets/img/shots/adama-setting-shower-320.webp?v=80 320w, assets/img/shots/adama-setting-shower-600.webp?v=80 600w, assets/img/shots/adama-setting-shower.webp?v=80 1200w" sizes="(max-width:760px) 92vw,(max-width:1080px) 46vw, 23vw" alt="Cupped hands holding a green botanical lather under falling water among ferns" loading="lazy" decoding="async" width="1200" height="1600" />
         <figcaption>A green lather</figcaption>
       </figure>
       <figure class="setting-tile rv rv-d3">
-        <img class="px" src="assets/img/shots/adama-setting-travertine-600.webp?v=79" srcset="assets/img/shots/adama-setting-travertine-320.webp?v=79 320w, assets/img/shots/adama-setting-travertine-600.webp?v=79 600w, assets/img/shots/adama-setting-travertine.webp?v=79 1200w" sizes="(max-width:760px) 92vw,(max-width:1080px) 46vw, 23vw" alt="ADAMA Replenishing Facial Oil on a raw travertine block with eucalyptus and stacked river stones, foliage shadow on a warm sunlit wall" loading="lazy" decoding="async" width="1200" height="1600" />
+        <img class="px" src="assets/img/shots/adama-setting-travertine-600.webp?v=80" srcset="assets/img/shots/adama-setting-travertine-320.webp?v=80 320w, assets/img/shots/adama-setting-travertine-600.webp?v=80 600w, assets/img/shots/adama-setting-travertine.webp?v=80 1200w" sizes="(max-width:760px) 92vw,(max-width:1080px) 46vw, 23vw" alt="ADAMA Replenishing Facial Oil on a raw travertine block with eucalyptus and stacked river stones, foliage shadow on a warm sunlit wall" loading="lazy" decoding="async" width="1200" height="1600" />
         <figcaption>The facial oil</figcaption>
       </figure>
     </div>
@@ -963,8 +973,8 @@ section[data-shopify]{position:relative;z-index:2}
        re-encoded H.264 CRF 28, audio stripped, +faststart -> 7.3 MB.
        Kept 16:9 rather than the wider sky-free strip so `object-fit:cover` behaves on phones.
        The previous adama-earth-soil.mp4 is retained in assets/video/ if we want it back. -->
-  <video class="px" muted loop playsinline preload="none" poster="assets/img/adama-raw-elements-poster.webp?v=79" aria-hidden="true">
-    <source src="assets/video/adama-raw-elements.mp4?v=79" type="video/mp4" />
+  <video class="px" muted loop playsinline preload="none" poster="assets/img/adama-raw-elements-poster.webp?v=80" aria-hidden="true">
+    <source src="assets/video/adama-raw-elements.mp4?v=80" type="video/mp4" />
   </video>
   <div class="film__scrim"></div>
   <div class="film__inner">
@@ -1034,7 +1044,7 @@ section[data-shopify]{position:relative;z-index:2}
         <p>Thirty-two formulations for skin, body and hair — twenty-eight in engraved stoneware. Every ingredient list published in full.</p>
       </div>
       <div class="fcol"><h3>Shop</h3><a href="#shop">All products</a><a href="#shop-hair">Hair</a><a href="#shop-body">Body</a><a href="#shop-face">Face</a><a href="#shop-sensitive">Sensitive</a><a href="#shop-simples">Les Simples</a></div>
-      <div class="fcol"><h3>About</h3><a href="#story">Our story</a><a href="#ingredients">Ingredients</a><a href="#ritual">The ritual</a><a href="#story">Sustainability</a></div>
+      <div class="fcol"><h3>About</h3><a href="#story">Our story</a><a href="#ingredients">Ingredients</a><a href="#ritual">The ritual</a><a href="botanicals.html">The botanicals</a></div>
       <div class="fcol"><h3>Care</h3><a href="mailto:hello@adama.earth">Contact</a><a href="info.html#shipping">Shipping & returns</a><a href="info.html#faq">FAQ</a><a href="info.html#stockists">Stockists</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms of sale</a></div>
     </div>
     <div class="footer__bar">
@@ -1197,24 +1207,41 @@ const INCI = {
 };
 
 const COLLECTIONS = [
-  {cat:'Hair',      tag:'Cleanse & strengthen',  img:'assets/img/col-hair.webp?v=79',      rep:'Shampoo, conditioner & scalp oil'},
-  {cat:'Body',      tag:'Polish & nourish',      img:'assets/img/col-body.webp?v=79',      rep:'Polish, creams & body oil'},
-  {cat:'Face',      tag:'Treat & replenish',     img:'assets/img/col-face.webp?v=79',      rep:'Serum, mist & facial oil'},
-  {cat:'Sensitive', tag:'Calm & comfort',        img:'assets/img/col-sensitive.webp?v=79', rep:'For reactive, delicate skin'},
+  {cat:'Hair',      tag:'Cleanse & strengthen',  img:'assets/img/col-hair.webp?v=80',      rep:'Shampoo, conditioner & scalp oil'},
+  {cat:'Body',      tag:'Polish & nourish',      img:'assets/img/col-body.webp?v=80',      rep:'Polish, creams & body oil'},
+  {cat:'Face',      tag:'Treat & replenish',     img:'assets/img/col-face.webp?v=80',      rep:'Serum, mist & facial oil'},
+  {cat:'Sensitive', tag:'Calm & comfort',        img:'assets/img/col-sensitive.webp?v=80', rep:'For reactive, delicate skin'},
   /* Les Simples had no tile while the hero's primary CTA sells it — ten of thirty-two
      SKUs and the most distinctive proposition the house has. `label` exists because the
      chapter anchor is 'Simples' but the collection is read as "Les Simples". */
-  {cat:'Simples',   label:'Les Simples', tag:'One ingredient, neat', img:'assets/img/col-simples.webp?v=79', rep:'Oils, hydrosols, clays & butters'},
+  {cat:'Simples',   label:'Les Simples', tag:'One ingredient, neat', img:'assets/img/col-simples.webp?v=80', rep:'Oils, hydrosols, clays & butters'},
 ];
 
+/* Six materials, with the product each one leads. `kind` decides the second line:
+   only a true binomial is set in italic. Three of these six are not plants, and
+   dressing a synthesised molecule in the same italic-Latin slot as
+   Rosmarinus officinalis is precisely the flattery this section exists to refuse. */
 const INGREDIENTS = [
-  {name:'Rosemary',        lat:'Rosmarinus officinalis', img:'assets/img/ing-rosemary.webp',  note:'Refreshes the scalp and conditions hair for a fuller, stronger look.'},
-  {name:'Jojoba',          lat:'Simmondsia chinensis',   img:'assets/img/ing-jojoba.webp',    note:'A dry-touch oil that mirrors skin’s own sebum — absorbs in seconds.'},
-  {name:'Rosehip',         lat:'Rosa canina',            img:'assets/img/ing-rosehip.webp',   note:'Rich in essential fatty acids for tone, radiance and repair.'},
-  {name:'Volcanic Sand',   lat:'Icelandic mineral',      img:'assets/img/ing-volcanic.webp',  note:'A fine, natural exfoliant that polishes without stripping.'},
-  {name:'Prebiotics',      lat:'Microbiome support',     img:'assets/img/ing-prebiotic.webp', note:'Feeds the skin’s good bacteria for a balanced, resilient barrier.'},
-  {name:'Panthenol',       lat:'Provitamin B5',          img:'assets/img/ing-panthenol.webp', note:'Deeply humectant — softens and soothes the driest skin.'},
+  {name:'Rosemary',      src:'Rosmarinus officinalis',  kind:'plant',    to:'scalp-oil',    img:'assets/img/ing-rosemary.webp',  note:'Refreshes the scalp and conditions hair for a fuller, stronger look.'},
+  {name:'Jojoba',        src:'Simmondsia chinensis',    kind:'plant',    to:'jojoba',       img:'assets/img/ing-jojoba.webp',    note:'A dry-touch oil that mirrors skin’s own sebum — absorbs in seconds.'},
+  {name:'Rosehip',       src:'Rosa canina',             kind:'plant',    to:'rosehip',      img:'assets/img/ing-rosehip.webp',   note:'Rich in essential fatty acids for tone, radiance and repair.'},
+  {name:'Volcanic Sand', src:'Volcanic mineral — Iceland', kind:'mineral', to:'body-polish', img:'assets/img/ing-volcanic.webp',  note:'A fine, natural exfoliant that polishes without stripping.'},
+  {name:'Prebiotics',    src:'Inulin — a plant fibre',  kind:'molecule', to:'jelly-serum',  img:'assets/img/ing-prebiotic.webp', note:'Feeds the skin’s good bacteria for a balanced, resilient barrier.'},
+  {name:'Panthenol',     src:'Provitamin B5 — synthesised', kind:'molecule', to:'body-cream', img:'assets/img/ing-panthenol.webp', note:'Deeply humectant — softens and soothes the driest skin.'},
 ];
+
+/* Where the range invites a comparison, answer it on the page instead of waiting to
+   be asked. A house that publishes every ingredient list has already made this
+   promise; these are the three places a reader could reasonably feel it was dodged.
+   Every figure below is checkable against the prices and INCI on this same page. */
+const CANDOUR = {
+  'grand-cru':  'One formulation in thirty-two carries the Grand Cru designation. It is not a claim about results — it names the lead material. Prickly pear stands first on the ingredient list and immortelle fourth, two of the most expensive botanicals in cosmetic use. Everything else it shares with the Replenishing Facial Oil: the same 30 mL, the same stoneware, the same evening step. If that oil suits you at $85, it will keep suiting you. This one exists for the material.',
+  'face-oil':   'Above this sits the Grand Cru Facial Oil at $120 — the same 30 mL in the same vessel, led by a rarer botanical. This is the oil the house was built on, and the one most people should buy.',
+  'body-cream': 'Two body creams, a dollar apart. This one is built on urea, which softens hard skin — heels, elbows, winter shins — and it carries a light scent. If your skin is reactive rather than rough, the Comforting Body Cream is the one to take: colloidal oat and allantoin, and no fragrance at all.',
+  'sens-cream': 'Two body creams, a dollar apart. This one is fragrance-free, built on colloidal oat and allantoin for skin that reacts to things. If your skin is rough rather than reactive, the Restorative Body Cream uses urea instead.',
+  'rose-hydro': 'The Hydrating Face Mist leads with this same Damask rose water and costs three times as much per millilitre. What it adds is everything after the water — glycerin, aloe and prebiotic inulin. If what you want is rose water, this is the rose water.',
+  'face-mist':  'The Rose Hydrosol leads with the same Damask rose water at a third of the price per millilitre. What the difference buys is what follows the water — glycerin, aloe and prebiotic inulin, which hold it on the skin rather than letting it flash off. If you only want the water, buy the hydrosol.',
+};
 
 /* tone → glass palette for the SVG vessels */
 const TONES = {
@@ -1275,7 +1302,7 @@ const media = (p, cls) => {
   // Ritual sets are 3:2 triptychs of their constituent products; single products are 3:4.
   const isSet = p.id.indexOf('set-') === 0;
   const w = isSet ? 1500 : 1200, hgt = isSet ? 1000 : 1600;
-  const base = `assets/img/shots/adama-${p.id}`, v = '?v=79';
+  const base = `assets/img/shots/adama-${p.id}`, v = '?v=80';
   // cart line-items are tiny — serve the 320w thumbnail; grid/modal get a responsive srcset
   if(cls.indexOf('citem') > -1)
     return `<img class="${cls}" src="${base}-320.webp${v}" alt="${p.name}" loading="lazy" decoding="async">`;
@@ -1396,7 +1423,7 @@ $('#product-grid').innerHTML = CHAPTERS.map(ch=>{
       <p class="chapter-line">${ch.line}</p>
     </header>
     <div class="chapter-grid">${items.map(productCard).join('')}</div>
-    ${ch.inter?`<figure class="shop-inter rv"><img src="assets/img/${ch.inter.img}-600.webp?v=79" srcset="assets/img/${ch.inter.img}-600.webp?v=79 600w, assets/img/${ch.inter.img}.webp?v=79 1100w" sizes="(max-width:760px) 92vw, 1080px" alt="${ch.inter.cap}" loading="lazy" decoding="async" width="1024" height="1536"><figcaption>${ch.inter.cap}</figcaption></figure>`:''}
+    ${ch.inter?`<figure class="shop-inter rv"><img src="assets/img/${ch.inter.img}-600.webp?v=80" srcset="assets/img/${ch.inter.img}-600.webp?v=80 600w, assets/img/${ch.inter.img}.webp?v=80 1100w" sizes="(max-width:760px) 92vw, 1080px" alt="${ch.inter.cap}" loading="lazy" decoding="async" width="1024" height="1536"><figcaption>${ch.inter.cap}</figcaption></figure>`:''}
   </div>`;
 }).join('');
 
@@ -1437,13 +1464,20 @@ $('#collections-grid').innerHTML = COLLECTIONS.map((c,i)=>`
     </div>
   </a>`).join('');
 
-$('#ingredients-grid').innerHTML = INGREDIENTS.map((g,i)=>`
+/* Each tile now exits to the product that leads with the material. Ingredients was
+   one of five nav items and landed in editorial with no product reachable from it. */
+$('#ingredients-grid').innerHTML = INGREDIENTS.map((g,i)=>{
+  // CATALOG.find, not byId() — byId is a `const` declared further down this script, so
+  // calling it here throws on its temporal dead zone and aborts everything after it.
+  const p = CATALOG.find(x=>x.id===g.to);
+  return `
   <div class="ing rv rv-d${i%3}">
-    <img class="ing__img" src="${g.img}" alt="${g.name} — ${g.lat}" loading="lazy" width="1200" height="900" />
+    <img class="ing__img" src="${g.img}" alt="${g.name} — ${g.src}" loading="lazy" width="1200" height="900" />
     <h3>${g.name}</h3>
-    <div class="lat">${g.lat}</div>
+    <div class="lat">${g.kind==='plant'?`<em>${g.src}</em>`:g.src}</div>
     <p>${g.note}</p>
-  </div>`).join('');
+    ${p?`<a class="link-underline ing__to" href="products/${p.id}.html">${p.name}</a>`:''}
+  </div>`;}).join('');
 
 
 /* ============================================================
@@ -1496,7 +1530,13 @@ function count(){ return cart.reduce((s,l)=>s+l.q,0); }
 function renderCart(){
   const items = $('#cartItems');
   if(!cart.length){
-    items.innerHTML = `<div class="cart__empty">Your cart is empty.</div>`;
+    // An empty cart was a dead end with a close button. Give it the one way back in
+    // that suits the house: the collection the hero already sells.
+    items.innerHTML = `<div class="cart__empty">
+      <p>Nothing here yet.</p>
+      <p class="cart__emptynote">Thirty-two formulations, every ingredient list published in full.</p>
+      <a class="link-underline" href="#shop-simples" data-cart-exit>Begin with Les Simples</a>
+    </div>`;
   } else {
     items.innerHTML = cart.map(l=>{
       const p = byId(l.id);
@@ -1553,6 +1593,9 @@ function openCart(){ cartEl.classList.add('open'); scrim.classList.add('open'); 
 function closeCart(){ cartEl.classList.remove('open'); scrim.classList.remove('open'); cartEl.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
 $('#cartBtn').addEventListener('click', ()=> cartEl.classList.contains('open')?closeCart():openCart());
 $('#cartClose').addEventListener('click', closeCart);
+// The empty-cart exit link is an in-page anchor: without this the drawer stays open
+// over the very grid it just sent the reader to.
+cartEl.addEventListener('click', e=>{ if(e.target.closest('[data-cart-exit]')) closeCart(); });
 scrim.addEventListener('click', ()=>{ closeCart(); closeMenu(); closeModal(); });
 try { renderCart(); } catch(e) { console.warn('cart render', e); }
 
@@ -1603,7 +1646,7 @@ function openProduct(id){
   const b=BOTANY[id], hasPlate=BOTANICAL.has(id);
   const botLatin=b?(b[2]==='plant'?`<em>${b[1]}</em>`:b[1]):'';
   const botFig=(b||hasPlate)?`<figure class="pm__botfig">${
-      hasPlate?`<img class="pm__botanical" src="assets/img/botanicals/${id}.webp?v=79" alt="Botanical illustration — ${b?b[0]:p.name}" loading="lazy" decoding="async">`:''
+      hasPlate?`<img class="pm__botanical" src="assets/img/botanicals/${id}.webp?v=80" alt="Botanical illustration — ${b?b[0]:p.name}" loading="lazy" decoding="async">`:''
     }${b?`<figcaption class="pm__botcap"><span class="pm__botname">${b[0]}</span><span class="pm__botlat">${botLatin}</span></figcaption>`:''}</figure>`:'';
   const related=CATALOG.filter(x=>x.cat===p.cat && x.id!==p.id).slice(0,3);
   const pairs=related.length?`<div class="pm__block"><h4>Complete the ritual</h4><div class="pm__pairs">${related.map(r=>`
@@ -1620,6 +1663,7 @@ function openProduct(id){
       <div class="pm__price">${money(p.price)} <small>${p.size}</small></div>
       <p class="pm__descriptor">${p.note}</p>
       ${(d.desc && d.desc!==p.note)?`<p class="pm__desc">${d.desc}</p>`:''}
+      ${CANDOUR[p.id]?`<p class="pm__candour">${CANDOUR[p.id]}</p>`:''}
       ${ing?`<div class="pm__block pm__key">${botFig}<div><h4>Key ingredients</h4><ul class="pm__ing">${ing}</ul></div></div>`:''}
       ${d.use?`<div class="pm__block"><h4>How to use</h4><p>${d.use}</p></div>`:''}
       ${(typeof INCI!=='undefined'&&INCI[p.id])?`<details class="pm__inci"><summary>Full ingredients — INCI</summary><p>${INCI[p.id]}</p></details>`:''}
