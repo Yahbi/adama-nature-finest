@@ -425,7 +425,7 @@ section[data-shopify]{position:relative;z-index:2}
 .value{border-top:1px solid var(--line);padding-top:var(--sp-3)}
 .value .k{font-family:var(--sans);font-size:var(--step-0);font-weight:500}
 .value .d{font-size:var(--step--1);color:var(--ink-soft);margin-top:.3rem;line-height:var(--lh-body)}
-.story__aside{background:#1B1A15 url("../img/nat-soil.jpg") center/cover;border:1px solid var(--line);padding:clamp(2.2rem,4vw,3.8rem);position:relative;overflow:hidden;color:var(--paper);min-height:clamp(300px,32vw,420px);display:flex;flex-direction:column;justify-content:flex-end}
+.story__aside{background:#1B1A15 url("../img/nat-soil.jpg?v=80") center/cover;border:1px solid var(--line);padding:clamp(2.2rem,4vw,3.8rem);position:relative;overflow:hidden;color:var(--paper);min-height:clamp(300px,32vw,420px);display:flex;flex-direction:column;justify-content:flex-end}
 .story__aside::before{content:"";position:absolute;inset:0;background:linear-gradient(165deg,rgba(20,17,12,.35),rgba(20,17,12,.85));z-index:1}
 /* The oversized אֲדָמָה watermark is gone: it set a word at 14% opacity as wallpaper, and it
    was the third time the page spelled the etymology out. Say it once, in the ethos. */
