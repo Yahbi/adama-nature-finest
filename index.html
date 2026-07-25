@@ -537,7 +537,7 @@ section[data-shopify]{position:relative;z-index:2}
 .value .d{font-size:var(--step--1);color:var(--ink-soft);margin-top:.3rem;line-height:var(--lh-body)}
 /* nat-soil moved out of this shorthand into a lazy <img> child below — a CSS background on
    an element in the render tree is never lazy. #1B1A15 stays so nothing flashes. */
-.story__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.story__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;z-index:0}
 .story__aside{background:#1B1A15;border:1px solid var(--line);padding:clamp(2.2rem,4vw,3.8rem);position:relative;overflow:hidden;color:var(--paper);min-height:clamp(300px,32vw,420px);display:flex;flex-direction:column;justify-content:flex-end}
 .story__aside::before{content:"";position:absolute;inset:0;background:linear-gradient(165deg,rgba(20,17,12,.35),rgba(20,17,12,.85));z-index:1}
 /* The oversized אֲדָמָה watermark is gone: it set a word at 14% opacity as wallpaper, and it
@@ -1082,7 +1082,12 @@ section[data-shopify]{position:relative;z-index:2}
       </div>
     </div>
     <aside class="story__aside rv rv-d2">
-      <img class="story__bg" src="assets/img/nat-soil.webp?v=80" alt="" loading="lazy" decoding="async" width="1200" height="720" aria-hidden="true">
+      <!-- Was a soil texture. The promise is a promise to people, so it is people who should be
+           in the frame — three generations, each holding the range. The aside renders 1.47:1 and
+           this frame is 0.67, so object-position holds all three faces above the scrim; a default
+           centre crop cut them off. adama-rite-05-glow stays unused on purpose: a second portrait
+           band would be repetition, and it is queued for the ethos if the owner wants it there. -->
+      <img class="story__bg" src="assets/img/campaign/adama-rite-07-three-600.webp?v=80" srcset="assets/img/campaign/adama-rite-07-three-600.webp?v=80 600w, assets/img/campaign/adama-rite-07-three.webp?v=80 1024w" sizes="(max-width:900px) 92vw, 620px" alt="" loading="lazy" decoding="async" width="1024" height="1536" aria-hidden="true">
       <h3>From the earth, for the body.</h3>
       <p>Stoneware, engraved rather than labelled — where the formula allows it; a soft-touch tube where a cream needs to be squeezed. The whole ingredient list named in full. Care as a daily rite, not a performance.</p>
     </aside>
