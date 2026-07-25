@@ -393,6 +393,13 @@ section[data-shopify]{position:relative;z-index:2}
 .ritual{background:var(--panel);border-block:1px solid var(--line)}
 .ritual__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.2rem,2.6vw,2.6rem);counter-reset:step}
 .step{position:relative;padding-top:var(--sp-5);border-top:1px solid var(--ink)}
+/* The frame sits under the rule and above the step name, so the hairline stays the thing that
+   opens each step. 4:5 crop keeps four portraits reading as one row. */
+.step__fig{margin:var(--sp-4) 0 var(--sp-3);aspect-ratio:4/5;overflow:hidden;background:var(--panel)}
+.step__fig img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform 1.6s var(--ease)}
+.step:hover .step__fig img{transform:scale(1.03)}
+@media (prefers-reduced-motion:reduce){.step__fig img{transition:none}.step:hover .step__fig img{transform:none}}
 .step::before{counter-increment:step;content:"0" counter(step);position:absolute;top:var(--sp-3);font-family:var(--sans);font-size:var(--step--1);color:var(--clay)}
 .step h3{font-family:var(--display);font-size:var(--step-1);font-weight:400;margin-top:var(--sp-1)}
 .step p{color:var(--ink-soft);font-size:var(--step--1);margin-top:var(--sp-2);line-height:var(--lh-body)}
@@ -774,7 +781,14 @@ section[data-shopify]{position:relative;z-index:2}
   </div>
 </section>
 
-<!-- The mid-page atmosphere band was removed 2026-07-17 at the owner's call. It had
+<!-- SUPERSEDED 2026-07-24 — do not cite this note to reject tropical imagery again. It did so
+     twice in good faith. Read against the owner's own board the house is RAW-ELEMENT register:
+     desert AND tropical AND mountain AND skin, unified by rawness, not by biome. Palms, ferns,
+     waterfalls and dense humid canopy are all in; what is out is DECORATIVE greenery — a flat wall
+     of pretty leaves with no depth, water or weather, which is what the clip below actually was.
+     Doctrine of record: 1-Brand/BRAND-CODEX.md, "The raw-element register". Historical note follows.
+
+     The mid-page atmosphere band was removed 2026-07-17 at the owner's call. It had
      carried a foliage clip (a tree canopy) that is off-brand for an earth/soil house,
      and the only >15s replacements were either off-register (bright desert) or too
      short (the dark boulder). Three on-register earth films already carry the page —
@@ -906,10 +920,12 @@ section[data-shopify]{position:relative;z-index:2}
   <div class="film__inner">
     <span class="eyebrow">Water</span>
     <h2 class="rv rv-d1">Where it all runs clear.</h2>
-    <!-- Caption rewritten 2026-07-24: it named "green canopy", the exact register the
-         ethos note above rejects as off-brand for an earth house. The clip stays (owner
-         request); the copy now reads to water and stone, which is what the band is for. -->
-    <p class="rv rv-d2">Falling water over wet stone — the source every formulation is trying to keep faith with.</p>
+    <!-- "green canopy" RESTORED 2026-07-24. I had cut it earlier the same day for breaching the
+         "earth-register not canopy-register" rule in the 2026-07-17 note above. Reading the owner's
+         board directly showed that rule was drawn too narrowly: the house is raw-element register —
+         desert AND tropical AND mountain AND skin — and dense humid canopy is squarely in. The word
+         also describes what this clip actually shows. See BRAND-CODEX, "The raw-element register". -->
+    <p class="rv rv-d2">Falling water, wet stone and green canopy — the source every formulation is trying to keep faith with.</p>
   </div>
 </section>
 
@@ -960,11 +976,23 @@ section[data-shopify]{position:relative;z-index:2}
       <span class="eyebrow">The ritual</span>
       <h2>Four unhurried steps.</h2>
     </div>
+    <!-- The four steps carried no imagery at all while six frames of exactly this — a hand at the
+         cheek, a mist caught backlit, green lather, skin after — sat in assets/img/campaign/
+         referenced zero times. The board this house is directed from is roughly half wet, sunlit
+         skin; the site had almost none. These are the frames already produced for it. -->
     <div class="ritual__grid">
-      <div class="step rv"><h3>Cleanse</h3><p>Begin with the <a class="link-underline" href="products/sens-cleanser.html">Calming Cleanser</a> — lift the day without stripping the skin's barrier.</p></div>
-      <div class="step rv rv-d1"><h3>Treat</h3><p>Press in the <a class="link-underline" href="products/jelly-serum.html">Prebiotic Jelly Serum</a> to support a balanced, resilient microbiome.</p></div>
-      <div class="step rv rv-d2"><h3>Hydrate</h3><p>Mist and moisturise — the <a class="link-underline" href="products/face-mist.html">Hydrating Face Mist</a>, then the <a class="link-underline" href="products/sens-moist.html">Soothing Moisturiser</a>.</p></div>
-      <div class="step rv rv-d3"><h3>Seal</h3><p>Finish with the <a class="link-underline" href="products/face-oil.html">Replenishing Facial Oil</a> to lock in radiance overnight.</p></div>
+      <div class="step rv">
+        <figure class="step__fig"><img src="assets/img/campaign/adama-rite-13-lather-600.webp?v=80" srcset="assets/img/campaign/adama-rite-13-lather-600.webp?v=80 600w, assets/img/campaign/adama-rite-13-lather.webp?v=80 1122w" sizes="(max-width:760px) 92vw, 23vw" alt="Green lather held in two cupped hands under falling water, ferns behind" loading="lazy" decoding="async" width="600" height="750"></figure>
+        <h3>Cleanse</h3><p>Begin with the <a class="link-underline" href="products/sens-cleanser.html">Calming Cleanser</a> — lift the day without stripping the skin's barrier.</p></div>
+      <div class="step rv rv-d1">
+        <figure class="step__fig"><img src="assets/img/campaign/adama-rite-01-drops-600.webp?v=80" srcset="assets/img/campaign/adama-rite-01-drops-600.webp?v=80 600w, assets/img/campaign/adama-rite-01-drops.webp?v=80 1024w" sizes="(max-width:760px) 92vw, 23vw" alt="A dropper held to the cheekbone, eyes closed, warm low light" loading="lazy" decoding="async" width="600" height="900"></figure>
+        <h3>Treat</h3><p>Press in the <a class="link-underline" href="products/jelly-serum.html">Prebiotic Jelly Serum</a> to support a balanced, resilient microbiome.</p></div>
+      <div class="step rv rv-d2">
+        <figure class="step__fig"><img src="assets/img/campaign/adama-rite-03-mist-600.webp?v=80" srcset="assets/img/campaign/adama-rite-03-mist-600.webp?v=80 600w, assets/img/campaign/adama-rite-03-mist.webp?v=80 1024w" sizes="(max-width:760px) 92vw, 23vw" alt="A fine mist caught in backlight against the jaw and throat" loading="lazy" decoding="async" width="600" height="900"></figure>
+        <h3>Hydrate</h3><p>Mist and moisturise — the <a class="link-underline" href="products/face-mist.html">Hydrating Face Mist</a>, then the <a class="link-underline" href="products/sens-moist.html">Soothing Moisturiser</a>.</p></div>
+      <div class="step rv rv-d3">
+        <figure class="step__fig"><img src="assets/img/campaign/adama-rite-09-visage-600.webp?v=80" srcset="assets/img/campaign/adama-rite-09-visage-600.webp?v=80 600w, assets/img/campaign/adama-rite-09-visage.webp?v=80 1024w" sizes="(max-width:760px) 92vw, 23vw" alt="Skin at the end of the ritual — damp, unmade-up, lit from one side" loading="lazy" decoding="async" width="600" height="900"></figure>
+        <h3>Seal</h3><p>Finish with the <a class="link-underline" href="products/face-oil.html">Replenishing Facial Oil</a> to lock in radiance overnight.</p></div>
     </div>
   </div>
 </section>
