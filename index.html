@@ -54,7 +54,7 @@
      the humanist (Optima-like: flared stems, no serifs) is display + wordmark only.
      No display serif anywhere — that pairing is the register tell. */
   --sans:"Helvetica Neue",Helvetica,Inter,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
-  --display:Optima,Candara,"Gill Sans","Gill Sans MT","Lucida Grande","Trebuchet MS",var(--sans);
+  --display:Optima,Candara,"Gill Sans","Gill Sans MT","Lucida Grande","Trebuchet MS","Noto Sans",var(--sans);
 
   /* Hebrew and Arabic — still zero network bytes. MEASURED, not assumed (fontTools cmap scan of
      the installed families, 2026-07-16): Optima, Gill Sans, Trebuchet MS, Helvetica Neue and
@@ -528,7 +528,10 @@ section[data-shopify]{position:relative;z-index:2}
 .value{border-top:1px solid var(--line);padding-top:var(--sp-3)}
 .value .k{font-family:var(--sans);font-size:var(--step-0);font-weight:500}
 .value .d{font-size:var(--step--1);color:var(--ink-soft);margin-top:.3rem;line-height:var(--lh-body)}
-.story__aside{background:#1B1A15 url("assets/img/nat-soil.webp?v=80") center/cover;border:1px solid var(--line);padding:clamp(2.2rem,4vw,3.8rem);position:relative;overflow:hidden;color:var(--paper);min-height:clamp(300px,32vw,420px);display:flex;flex-direction:column;justify-content:flex-end}
+/* nat-soil moved out of this shorthand into a lazy <img> child below — a CSS background on
+   an element in the render tree is never lazy. #1B1A15 stays so nothing flashes. */
+.story__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.story__aside{background:#1B1A15;border:1px solid var(--line);padding:clamp(2.2rem,4vw,3.8rem);position:relative;overflow:hidden;color:var(--paper);min-height:clamp(300px,32vw,420px);display:flex;flex-direction:column;justify-content:flex-end}
 .story__aside::before{content:"";position:absolute;inset:0;background:linear-gradient(165deg,rgba(20,17,12,.35),rgba(20,17,12,.85));z-index:1}
 /* The oversized אֲדָמָה watermark is gone: it set a word at 14% opacity as wallpaper, and it
    was the third time the page spelled the etymology out. Say it once, in the ethos. */
@@ -728,7 +731,13 @@ section[data-shopify]{position:relative;z-index:2}
        Poster is frame 0, so there is no jump when playback starts. -->
   <video class="hero__video" autoplay muted loop playsinline preload="metadata"
          poster="assets/img/adama-hero-dunes-poster.webp?v=80" aria-hidden="true">
-    <source src="assets/video/adama-hero-dunes.mp4?v=80" type="video/mp4" />
+    <!-- Two encodes from the same master, phone first. The 4K original was 9.6 MB of H.264 High
+         level 5.1 rendered into a 390 CSS px box — three times more horizontal pixels than the
+         handset can show, at a decode level many mid-range phones do not accelerate. Re-encoded
+         from the file on disk: 1080p/L4.0 CRF30 = 2.2 MB at SSIM 0.9925, 720p/L3.1 = 0.7 MB.
+         The 4K master stays in the source repo and is deliberately NOT deployed. -->
+    <source media="(max-width:800px)" src="assets/video/adama-hero-dunes-720.mp4?v=80" type="video/mp4" />
+    <source src="assets/video/adama-hero-dunes-1080.mp4?v=80" type="video/mp4" />
   </video>
   <button class="vid-toggle" id="vidToggle" aria-pressed="false" aria-label="Pause background videos">Pause</button>
   <div class="hero__scrim"></div>
@@ -858,14 +867,14 @@ section[data-shopify]{position:relative;z-index:2}
         <h2>Shop everything.</h2>
       </div>
       <div class="shop__controls">
-        <div class="filters" id="filters" role="group" aria-label="Filter products by collection">
-          <button class="filter" data-f="all" aria-pressed="true">All</button>
-          <button class="filter" data-f="Hair" aria-pressed="false">Hair</button>
-          <button class="filter" data-f="Body" aria-pressed="false">Body</button>
-          <button class="filter" data-f="Face" aria-pressed="false">Face</button>
-          <button class="filter" data-f="Sensitive" aria-pressed="false">Sensitive</button>
-          <button class="filter" data-f="Simples" aria-pressed="false">Les Simples</button>
-        </div>
+        <nav class="filters" id="filters" aria-label="Jump to a chapter">
+          <a class="filter" data-f="all" href="#shop">All</a>
+          <a class="filter" data-f="Hair" href="#shop-hair">Hair</a>
+          <a class="filter" data-f="Body" href="#shop-body">Body</a>
+          <a class="filter" data-f="Face" href="#shop-face">Face</a>
+          <a class="filter" data-f="Sensitive" href="#shop-sensitive">Sensitive</a>
+          <a class="filter" data-f="Simples" href="#shop-simples">Les Simples</a>
+        </nav>
         <!-- An apothecary keeps a register as well as a shelf. The Index is the whole range as a
              text list — name, botanical, size, price — for a reader who wants to compare rather
              than browse. Same data, same chapter anchors, no new content. -->
@@ -875,7 +884,7 @@ section[data-shopify]{position:relative;z-index:2}
         </div>
       </div>
     </div>
-    <div id="product-grid"><!-- injected --></div>
+    <div id="product-grid" role="region" aria-label="The collection" aria-live="polite"><!-- injected --></div>
   </div>
 </section>
 
@@ -887,7 +896,10 @@ section[data-shopify]{position:relative;z-index:2}
      41 MB. At 1080p CRF 33 with a 4.2 Mbps cap it is 6.9 MB, in line with the sibling bands.
      Sits after the 32-product grid so it reads as a breath before the ritual sets. -->
 <section class="film film--light" data-shopify="jungle-falls" aria-label="Tropical falls">
-  <video class="px" muted loop playsinline preload="none" poster="assets/img/adama-jungle-falls-poster.webp?v=80" aria-hidden="true">
+    <!-- poster= is fetched eagerly even with preload="none", so this sat on the critical
+         path for a band far below the fold. Lazy still instead, per the forest band. -->
+  <img class="px film__still" src="assets/img/adama-jungle-falls-poster.webp?v=80" alt="" loading="lazy" decoding="async" width="1920" height="1080" aria-hidden="true">
+  <video class="px" muted loop playsinline preload="none" aria-hidden="true">
     <source src="assets/video/adama-jungle-falls.mp4?v=80" type="video/mp4" />
   </video>
   <div class="film__scrim"></div>
@@ -916,7 +928,10 @@ section[data-shopify]{position:relative;z-index:2}
 <!-- SECTION: stone-formation film ==================================== -->
 <section class="film" data-shopify="film-stone" aria-label="Ancient earth">
   <!-- Stone formation — aerial canyon (re-added per request) -->
-  <video class="px" muted loop playsinline preload="none" poster="assets/img/adama-earth-strata-poster.jpg?v=80" aria-hidden="true">
+    <!-- poster= is fetched eagerly even with preload="none", so this sat on the critical
+         path for a band far below the fold. Lazy still instead, per the forest band. -->
+  <img class="px film__still" src="assets/img/adama-earth-strata-poster.webp?v=80" alt="" loading="lazy" decoding="async" width="1280" height="720" aria-hidden="true">
+  <video class="px" muted loop playsinline preload="none" aria-hidden="true">
     <source src="assets/video/adama-earth-strata.mp4?v=80" type="video/mp4" />
   </video>
   <div class="film__scrim"></div>
@@ -1009,7 +1024,10 @@ section[data-shopify]{position:relative;z-index:2}
        never was, so the band shipped people on a full-bleed brand frame. adama-earth-soil.mp4 is
        a clean aerial of a mineral riverbed: no figures anywhere in the loop, right palette, and
        it was explicitly retained in assets/video/ for exactly this. raw-elements is kept on disk. -->
-  <video class="px" muted loop playsinline preload="none" poster="assets/img/adama-earth-soil-poster.webp?v=80" aria-hidden="true">
+    <!-- poster= is fetched eagerly even with preload="none", so this sat on the critical
+         path for a band far below the fold. Lazy still instead, per the forest band. -->
+  <img class="px film__still" src="assets/img/adama-earth-soil-poster.webp?v=80" alt="" loading="lazy" decoding="async" width="1280" height="720" aria-hidden="true">
+  <video class="px" muted loop playsinline preload="none" aria-hidden="true">
     <source src="assets/video/adama-earth-soil.mp4?v=80" type="video/mp4" />
   </video>
   <div class="film__scrim"></div>
@@ -1036,6 +1054,7 @@ section[data-shopify]{position:relative;z-index:2}
       </div>
     </div>
     <aside class="story__aside rv rv-d2">
+      <img class="story__bg" src="assets/img/nat-soil.webp?v=80" alt="" loading="lazy" decoding="async" width="1200" height="720" aria-hidden="true">
       <h3>From the earth, for the body.</h3>
       <p>Stoneware, engraved rather than labelled — where the formula allows it; a soft-touch tube where a cream needs to be squeezed. The whole ingredient list named in full. Care as a daily rite, not a performance.</p>
     </aside>
@@ -1082,7 +1101,7 @@ section[data-shopify]{position:relative;z-index:2}
         <div class="mark">ADAMA</div>
         <p>Thirty-two formulations for skin, body and hair — twenty-eight in engraved stoneware. Every ingredient list published in full.</p>
       </div>
-      <div class="fcol"><h3>Shop</h3><a href="#shop">All products</a><a href="#shop-hair">Hair</a><a href="#shop-body">Body</a><a href="#shop-face">Face</a><a href="#shop-sensitive">Sensitive</a><a href="#shop-simples">Les Simples</a></div>
+      <div class="fcol"><h3>Shop</h3><a href="#shop">All products</a><a href="#shop-hair">Hair</a><a href="#shop-body">Body</a><a href="#shop-face">Face</a><a href="#shop-sensitive">Sensitive</a><a href="#shop-simples">Les Simples</a><a href="#sets">Gift sets</a></div>
       <div class="fcol"><h3>About</h3><a href="#story">Our story</a><a href="#ingredients">Ingredients</a><a href="#ritual">The ritual</a><a href="botanicals.html">The botanicals</a></div>
       <div class="fcol"><h3>Care</h3><a href="mailto:hello@adama.earth">Contact</a><a href="info.html#shipping">Shipping & returns</a><a href="info.html#faq">FAQ</a><a href="info.html#stockists">Stockists</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms of sale</a></div>
     </div>
@@ -1345,7 +1364,7 @@ const media = (p, cls) => {
   // cart line-items are tiny — serve the 320w thumbnail; grid/modal get a responsive srcset
   if(cls.indexOf('citem') > -1)
     return `<img class="${cls}" src="${base}-320.webp${v}" alt="${p.name}" loading="lazy" decoding="async">`;
-  return `<img class="${cls}" src="${base}-600.webp${v}" srcset="${base}-320.webp${v} 320w, ${base}-600.webp${v} 600w, ${base}-800.webp${v} 800w, ${base}.webp${v} 1200w" sizes="(max-width:560px) 92vw,(max-width:1080px) 44vw, 320px" alt="${p.name}" loading="lazy" decoding="async" width="${w}" height="${hgt}">`;
+  return `<img class="${cls}" src="${base}-600.webp${v}" srcset="${base}-320.webp${v} 320w, ${base}-600.webp${v} 600w, ${base}-800.webp${v} 800w, ${base}.webp${v} 1200w" sizes="(max-width:1080px) 44vw, 320px" alt="${p.name}" loading="lazy" decoding="async" width="${w}" height="${hgt}">`;
 };
 
 /* ============================================================
@@ -1568,12 +1587,17 @@ if(location.hash){
 
 /* Chapter navigation — the range is always fully visible (Aesop pattern);
    the bar jumps to a chapter rather than hiding products. */
+/* Real links now, so the jump works with JS off and reads correctly to assistive tech. JS only
+   improves it: it offsets for the sticky header, which a bare anchor jump cannot do. No
+   aria-pressed — nothing here holds a persistent state, because nothing is being filtered. */
 $('#filters').addEventListener('click', e=>{
   const b = e.target.closest('.filter'); if(!b) return;
-  const f = b.dataset.f;
-  $$('.filter').forEach(x=>x.setAttribute('aria-pressed', x===b));
-  const t = f==='all' ? $('#shop') : $('#shop-'+f.toLowerCase());
-  if(t) window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 104, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  const t = document.querySelector(b.getAttribute('href'));
+  if(!t) return;
+  e.preventDefault();
+  window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 104,
+    behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  history.replaceState(null, '', b.getAttribute('href'));
 });
 $('#views').addEventListener('click', e=>{
   const b = e.target.closest('.filter'); if(!b || b.dataset.v===shopView) return;
@@ -1645,8 +1669,14 @@ function renderCart(){
   const c = count();
   const badge = $('#cartCount');
   badge.textContent = c; badge.classList.toggle('show', c>0);
-  $('#checkout').style.pointerEvents = cart.length ? 'auto':'none';
-  $('#checkout').style.opacity = cart.length ? '1':'.4';
+  // pointer-events:none stops a mouse and does nothing whatever to a keyboard: the link stayed
+  // tabbable and Enter-activatable while looking unavailable. A control that looks disabled must
+  // be disabled to every input method.
+  const co = $('#checkout'), live = !!cart.length;
+  co.style.pointerEvents = live ? 'auto':'none';
+  co.style.opacity = live ? '1':'.4';
+  co.setAttribute('aria-disabled', live ? 'false':'true');
+  co.tabIndex = live ? 0 : -1;
 }
 const vidToggle = document.getElementById('vidToggle');
 if (vidToggle) vidToggle.addEventListener('click', () => {
@@ -1675,6 +1705,7 @@ function openCart(){ cartEl.classList.add('open'); scrim.classList.add('open'); 
 function closeCart(){ cartEl.classList.remove('open'); scrim.classList.remove('open'); cartEl.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
 $('#cartBtn').addEventListener('click', ()=> cartEl.classList.contains('open')?closeCart():openCart());
 $('#cartClose').addEventListener('click', closeCart);
+$('#checkout').addEventListener('click', e=>{ if(!cart.length){ e.preventDefault(); } });
 // The empty-cart exit link is an in-page anchor: without this the drawer stays open
 // over the very grid it just sent the reader to.
 cartEl.addEventListener('click', e=>{ if(e.target.closest('[data-cart-exit]')) closeCart(); });
@@ -1690,15 +1721,19 @@ try { renderCart(); } catch(e) { console.warn('cart render', e); }
 (function(){
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const all=[...document.querySelectorAll('video')];
-  const vids=all.slice(1); // keep hero (index 0)
-  vids.forEach(v=>{ v.removeAttribute('autoplay'); v.pause(); });
+  // The hero keeps its autoplay so first paint is unchanged, but it is now OBSERVED like the
+  // rest. It used to be excluded, so once started it downloaded to completion and went on
+  // buffering while the reader was twenty thousand pixels away: measured 6.7 MB by the foot of
+  // the page, still unpaused, competing for bandwidth with everything below it and holding the
+  // radio and decoder open on a phone. rootMargin gives it back on the way up.
+  all.slice(1).forEach(v=>{ v.removeAttribute('autoplay'); v.pause(); });
   const stopAll=()=>all.forEach(v=>{ try{ v.pause(); v.removeAttribute('autoplay'); }catch(e){} });
   if(reduce.matches){ stopAll(); return; }   // honor reduced-motion: posters only
   const io=new IntersectionObserver(es=>es.forEach(en=>{
     const v=en.target; if(reduce.matches){ v.pause(); return; }
     if(en.isIntersecting){ v.play().catch(()=>{}); } else v.pause();
   }),{rootMargin:'200px'});
-  vids.forEach(v=>io.observe(v));
+  all.forEach(v=>io.observe(v));
   reduce.addEventListener?.('change', e=>{ if(e.matches) stopAll(); });
 })();
 
