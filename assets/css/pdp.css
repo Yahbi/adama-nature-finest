@@ -46,11 +46,11 @@
   /* Ratio 1.2 through step-3 (13.3 / 16 / 19.2 / 23 / 27.7px).
      step-4 is the display tier and the ONLY thing above 28px — capped at 56px.
      Measured: the largest type on aesop.com's category page is 31px. */
-  --step--1:clamp(.78rem,.75rem + .12vw,.83rem);   /* 12.5 → 13.3 */
-  --step-0: clamp(.94rem,.91rem + .15vw,1rem);      /* 15.0 → 16.0 */
+  --step--1:clamp(.875rem,.85rem + .12vw,.935rem); /* 14.0 → 15.0 — matches index.html */
+  --step-0: clamp(1rem,.97rem + .15vw,1.06rem);    /* 16.0 → 17.0 — matches index.html */
   --step-1: clamp(1.06rem,1rem + .25vw,1.2rem);     /* 17.0 → 19.2 */
   --step-2: clamp(1.2rem,1.1rem + .45vw,1.44rem);   /* 19.2 → 23.0 */
-  --step-3: clamp(1.45rem,1.25rem + .85vw,1.73rem); /* 23.2 → 27.7 */
+  --step-3: clamp(1.6rem,1.3rem + 1.15vw,2.15rem); /* 25.6 → 34.4 — matches index.html */
   --step-4: clamp(1.95rem,1.35rem + 2.6vw,3.5rem);  /* 31.2 → 56.0 — display only */
 
   /* TYPE HIERARCHY — five tiers, each with exactly one job. A 1.2 ratio is too quiet to
@@ -148,7 +148,7 @@ ul{margin:0;padding:0;list-style:none}
 .btn{
   --bg:var(--ink);--fg:var(--paper);--bd:var(--ink);
   display:inline-flex;align-items:center;justify-content:center;gap:.6em;
-  font-family:var(--sans);font-size:.68rem;font-weight:400;
+  font-family:var(--sans);font-size:var(--step--1);font-weight:400;
   letter-spacing:.02em;
   padding:1.35em 3em;border:1px solid var(--bd);background:var(--bg);color:var(--fg);
   border-radius:0;cursor:pointer;position:relative;overflow:hidden;
@@ -402,7 +402,7 @@ section[data-shopify]{position:relative;z-index:2}
 .pm__pairimg svg{position:absolute;inset:0;width:100%;height:100%;padding:.6rem}
 .pm__pair:hover .pm__pairimg img{transform:scale(1.05)}
 .pm__pairname{font-family:var(--sans);font-size:var(--step--1);line-height:1.35;color:var(--ink)}
-.pm__pairprice{font-size:.66rem;letter-spacing:.06em;color:var(--ink-faint)}
+.pm__pairprice{font-size:var(--step--1);letter-spacing:.06em;color:var(--ink-faint)}
 @media (max-width:720px){.pm{grid-template-columns:1fr}.pm__media{min-height:230px}.pm__media svg{height:210px}}
 
 @media (max-width:1080px){.sets-grid{grid-template-columns:repeat(2,1fr)}}
@@ -494,7 +494,7 @@ section[data-shopify]{position:relative;z-index:2}
 .cart__foot{border-top:1px solid var(--line);padding:1.4rem var(--gutter) calc(1.4rem + env(safe-area-inset-bottom))}
 .cart__sub{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--sans);font-size:var(--step-1)}
 .cart__sub small{font-family:var(--sans);font-size:var(--step--1);letter-spacing:.02em;color:var(--ink-faint)}
-.cart__note{font-size:.68rem;color:var(--ink-faint);margin:.6rem 0 1rem}
+.cart__note{font-size:var(--step--1);color:var(--ink-faint);margin:.6rem 0 1rem}
 
 /* ============================================================
    MOBILE NAV
@@ -603,12 +603,19 @@ section[data-shopify]{position:relative;z-index:2}
    The frame follows the home grid's convention exactly (4:5 on #191510), because
    the range is shot at two ratios and an un-normalised frame ends up ragged.
    `contain`, not `cover`: on a card a crop is fine, on the hero the whole vessel
-   should be in view. The letterbox is the same near-black as the shots' own
-   ground, so the seam does not read. */
+   should be in view.
+
+   The frame was 3/4 while every shot is 4/5, so `contain` letterboxed each one —
+   and the old #191510 fill was chosen when the shots had a near-black ground.
+   They are warm plaster now, so those bands read as hard black bars across the
+   top and bottom of the product image. Matching the frame to the asset removes
+   the letterbox entirely; the fill is the shots' own measured ground (#AB9687)
+   so that any future off-ratio image degrades quietly instead of punching a
+   black hole in the page. */
 .pdp__media{position:sticky;top:calc(var(--header-h) + var(--sp-3));
-  aspect-ratio:3/4;background:#191510;overflow:hidden}
+  aspect-ratio:4/5;background:#AB9687;overflow:hidden}
 .pdp__shot{width:100%;height:100%;object-fit:contain;display:block}
-.pdp__badge{display:block;font-size:.72rem;letter-spacing:.04em;color:var(--ink-faint);margin:0 0 var(--sp-3)}
+.pdp__badge{display:block;font-size:var(--step--1);letter-spacing:.04em;color:var(--ink-faint);margin:0 0 var(--sp-3)}
 
 .pdp__name{font-family:var(--display);font-size:var(--step-3);font-weight:400;line-height:var(--lh-tight);margin-bottom:var(--sp-2)}
 .pdp__price{font-size:var(--step-1);margin-bottom:var(--sp-3)}
@@ -715,6 +722,6 @@ section[data-shopify]{position:relative;z-index:2}
 .pdp__botanical{display:flex;align-items:center;gap:.95rem;margin:0 0 var(--sp-4);padding:1rem 0;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);max-width:46ch}
 .pdp__botanical img{flex:0 0 auto;height:96px;width:auto;max-width:118px;object-fit:contain;opacity:.94}
 .pdp__botanical figcaption{line-height:1.32}
-.pdp__botanical .b-lab{display:block;font-size:.66rem;letter-spacing:.04em;color:var(--ink-faint)}
+.pdp__botanical .b-lab{display:block;font-size:var(--step--1);letter-spacing:.04em;color:var(--ink-faint)}
 .pdp__botanical .b-name{display:block;font-size:.98rem;color:var(--ink);margin-top:.12rem}
 .pdp__botanical .b-lat{display:block;font-size:.8rem;color:var(--ink-soft)}
