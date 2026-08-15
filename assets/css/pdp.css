@@ -456,7 +456,7 @@ section[data-shopify]{position:relative;z-index:2}
 .footer__brand .mark{font-family:var(--display);font-size:2rem;letter-spacing:.4em;text-indent:.4em;font-weight:500;color:var(--paper)}
 .footer__brand p{color:rgba(244,239,230,.6);margin-top:1.2rem;max-width:34ch;font-size:var(--step--1)}
 
-.fcol h3{font-size:var(--step--1);letter-spacing:.06em;font-weight:500;color:rgba(244,239,230,.5);margin-bottom:1.2rem}
+.fcol h2,.fcol h3{font-size:var(--step--1);letter-spacing:.06em;font-weight:500;color:rgba(244,239,230,.5);margin-bottom:1.2rem}
 .fcol a{display:block;color:rgba(244,239,230,.82);font-size:var(--step--1);padding:.4rem 0;transition:color .3s}
 .fcol a:hover{color:var(--paper)}
 .footer__bar{border-top:1px solid rgba(244,239,230,.14);padding:var(--sp-4) 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:var(--step--1);letter-spacing:.02em;color:rgba(244,239,230,.5)}
