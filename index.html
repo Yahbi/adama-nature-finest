@@ -435,6 +435,13 @@ section[data-shopify]{position:relative;z-index:2}
 .shop-chapter + .shop-chapter{margin-top:clamp(3rem,6vw,5.5rem)}
 .chapter-head{margin:0 0 clamp(1.6rem,3vw,2.6rem);padding-top:clamp(1.2rem,2.4vw,2rem);border-top:1px solid var(--line)}
 .chapter-line{font-family:var(--serif,serif);font-size:clamp(1.15rem,1.9vw,1.5rem);color:var(--ink-soft);max-width:34ch;line-height:1.45;text-wrap:balance}
+/* Sub-chapters group a long chapter without hiding anything — a heading, not a filter. */
+.sub-chapter + .sub-chapter{margin-top:clamp(2.2rem,4vw,3.4rem)}
+.sub-chapter__head{display:flex;align-items:baseline;gap:.6rem;font-family:var(--sans);font-size:var(--step--1);
+  letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);
+  margin:0 0 clamp(1.2rem,2.2vw,1.8rem);padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
+.sub-chapter__count{font-variant-numeric:tabular-nums lining-nums;letter-spacing:0;color:var(--ink-faint);opacity:.7}
+.sub-chapter .register{border-top:0}
 .shop-inter{margin:clamp(2.6rem,5vw,4.5rem) 0 0}
 .shop-inter img{width:100%;height:auto;aspect-ratio:16/8;object-fit:cover;display:block}/* height:auto is load-bearing — the markup carries width/height attrs (1024x1536) as
    presentational hints. With no author `height`, that hint won, the box rendered PORTRAIT
@@ -1155,84 +1162,84 @@ section[data-shopify]{position:relative;z-index:2}
    DATA — real Adama / Selfnamed catalog
    ============================================================ */
 const CATALOG = [
-  {id:'bakuchiol-serum', name:'Bakuchiol Facial Serum', cat:'Face', size:'30 mL', price:68, vessel:'dropper', tone:'clay', note:'Bakuchiol on a jojoba base, with evening primrose and rosehip; the gentler route to renewal.', organic:61, natural:99},
-  {id:'eye-cream', name:'Smoothing Eye Cream', cat:'Face', size:'15 mL', price:48, vessel:'pump', tone:'frost', note:'Aloe and jojoba, light enough for the eye area and nothing more than that.', organic:18, natural:100},
-  {id:'hand-cream', name:'Softening Hand Cream', cat:'Body', size:'290 mL', price:28, vessel:'pump', tone:'cream', note:'Cocoa and shea butter in a cream that sinks in before you touch the door handle.', organic:14, natural:99},
-  {id:'body-cream', name:'Comforting Body Cream', cat:'Body', size:'190 mL', price:52, vessel:'pump', tone:'frost', note:'Aloe, sunflower and olive; the cream for skin that has had enough of the weather.', organic:20, natural:99},
-  {id:'clay-mask', name:'Mineral Clay Mask', cat:'Face', size:'90 mL', price:54, vessel:'jar', tone:'stone', badge:'Fragrance-free', note:'Kaolin, montmorillonite and diatomaceous earth, with charcoal. No fragrance at all.', organic:16, natural:100},
-  {id:'face-oil',        name:'Replenishing Facial Oil',  cat:'Face', size:'30 mL',  price:85, vessel:'dropper', tone:'clay',  note:'Jojoba and rosehip with sea buckthorn; four drops at night, a low glow by morning.', organic:62, natural:99},
-  {id:'argan-berry',     name:'Argan & Berry Facial Oil', cat:'Face', size:'30 mL',  price:72, vessel:'dropper', tone:'kraft', note:'Argan and jojoba carrying northern berries — sea buckthorn, cloudberry, blueberry seed.', organic:63, natural:100},
-  {id:'face-cream',      name:'Restorative Face Cream',   cat:'Face', size:'50 mL',  price:62, vessel:'pump',    tone:'cream', note:'Cocoa butter and argan, whipped rich; a cream for weather-worn skin.', organic:20, natural:99},
-  {id:'overnight-cream', name:'Soothing Overnight Cream', cat:'Face', size:'50 mL',  price:57, vessel:'pump',    tone:'frost', badge:'Fragrance-free', note:'Aloe and mango butter, no fragrance at all; skin left calm by morning.', organic:42, natural:99},
-  {id:'cleansing-balm',  name:'Botanical Cleansing Balm', cat:'Face', size:'150 mL', price:58, vessel:'pump',    tone:'cream', note:'Sunflower and camomile; balm to milk, and the day comes away with it.', organic:39, natural:100},
-  {id:'cleansing-milk',  name:'Gentle Cleansing Milk',    cat:'Face', size:'190 mL', price:44, vessel:'pump',    tone:'frost', note:'Shea and argan in a milk that rinses clean, and strips nothing on the way out.', organic:15, natural:99},
-  {id:'body-oil',        name:'Nourishing Body Oil',      cat:'Body', size:'150 mL', price:59, vessel:'pump',    tone:'clay',  badge:'86% organic', note:'Sunflower, argan, rosehip and jojoba; dry to the touch before you finish dressing.', organic:86, natural:99},
-  {id:'body-polish',     name:'Volcanic Sand Body Polish',cat:'Body', size:'170 mL', price:40, vessel:'jar',     tone:'stone', note:'Volcanic sand milled fine as flour, carried in castor oil.', natural:99},
-  {id:'scalp-oil',       name:'Rosemary Scalp Oil',       cat:'Hair', size:'30 mL',  price:34, vessel:'dropper', tone:'olive', note:'Rosemary and peppermint wake the scalp before washing; a cool prickle, then calm.', organic:69, natural:100},
-  {id:'gloss-shampoo-vetiver', name:'Gloss Shampoo, Smoky Green Vetiver', cat:'Hair', size:'400 mL', price:32, vessel:'pump', tone:'kraft', note:'Aloe on a gentle coco-sulfate base, with black tea and blueberry behind it; cedarwood carries the smoke.', organic:9, natural:98},
-  {id:'gloss-conditioner-vetiver', name:'Gloss Conditioner, Smoky Green Vetiver', cat:'Hair', size:'370 mL', price:32, vessel:'pump', tone:'kraft', note:'Avocado oil and panthenol close the cuticle; cedarwood and patchouli carry the smoke-green note.', natural:99},
-  {id:'deep-cleanse-scalp-scrub', name:'Deep Cleanse Scalp Scrub, Rosemary & Mint', cat:'Hair', size:'170 mL', price:38, vessel:'pump', tone:'olive', note:'Sour cherry shell and kaolin lift buildup from the scalp; rosemary and peppermint leave a cool, clean prickle.', organic:7, natural:99},
-  {id:'urea-body-cream', name:'Urea & Panthenol Body Cream', cat:'Body', size:'280 mL', price:44, vessel:'pump', tone:'frost', note:'Sunflower oil bodied with panthenol and hyaluronic acid; 5% urea for rough, dry skin that needs more than a lotion.', natural:99},
-  {id:'roll-on-deodorant', name:'Roll-On Deodorant, Aluminum-Free', cat:'Body', size:'50 mL', price:26, vessel:'pump', tone:'sage', note:'Lavender and rosemary over aloe and panthenol; shikimic acid works at the source of odour.', natural:99},
-  {id:'silk-skin-hand-cream-spices-sandalwood', name:'Silk Skin Hand Cream, Spices & Sandalwood', cat:'Body', size:'270 mL', price:34, vessel:'pump', tone:'kraft', note:"Sunflower oil and cocoa seed butter, velvety and quick to absorb; cardamom and ginger over cedar and patchouli.", organic:15, natural:99},
-  {id:'sensitive-skin-face-body-cleanser', name:'Sensitive Skin Face & Body Cleanser', cat:'Body', size:'390 mL', price:38, vessel:'pump', tone:'frost', note:'Linden and jasmine flower extract over plum, in a minimalist wash gentle enough for the face.', natural:98},
-  {id:'retinol-alternative-moisturiser', name:'Retinol Alternative Moisturiser', cat:'Face', size:'50 mL', price:58, vessel:'pump', tone:'cream', note:"Aloe and jojoba carry two percent Bidens pilosa — the supplier's retinol alternative — with sea buckthorn and rose myrtle behind it.", organic:23, natural:99},
-  {id:'glycolic-acid-exfoliating-toner', name:'Glycolic Acid Exfoliating Toner', cat:'Face', size:'250 mL', price:46, vessel:'pump', tone:'clay', note:'Five percent glycolic acid with cranberry and lingonberry extract behind it, evening out tone.'},
-  {id:'dry-shampoo-spray', name:'Quick Refresh Dry Shampoo Spray', cat:'Hair', size:'100 mL', price:32, vessel:'pump', tone:'olive', note:'Echinacea and rhodiola in a fine mist that lifts sebum from the roots between washes.'},
-  {id:'peptide-eye-cream', name:'Peptide Age-Defying Eye Cream', cat:'Face', size:'15 mL', price:54, vessel:'pump', tone:'frost', note:'Hexapeptide-11 and ginkgo biloba, in a clinical-grade peptide complex light enough for the eye area.', organic:8, natural:99},
-  {id:'peptide-ageless-cream', name:'Peptide Ageless AM/PM Cream', cat:'Face', size:'50 mL', price:64, vessel:'pump', tone:'cream', note:'Hexapeptide-11 with hydrolyzed hyaluronic acid and ginkgo biloba; a day-to-night firming cream.', organic:9, natural:99},
-  {id:'ferment-niacinamide-serum', name:'Ferment & Niacinamide Serum', cat:'Face', size:'30 mL', price:66, vessel:'dropper', tone:'clay', badge:'Fragrance-free', note:'Niacinamide and a ferment complex — Lactobacillus ferment and phospholipids — with centella asiatica behind it.'},
+  {id:'bakuchiol-serum', name:'Bakuchiol Facial Serum', cat:'Face', sub:'Serums', size:'30 mL', price:68, vessel:'dropper', tone:'clay', note:'Bakuchiol on a jojoba base, with evening primrose and rosehip; the gentler route to renewal.', organic:61, natural:99},
+  {id:'eye-cream', name:'Smoothing Eye Cream', cat:'Face', sub:'Eye Care', size:'15 mL', price:48, vessel:'pump', tone:'frost', note:'Aloe and jojoba, light enough for the eye area and nothing more than that.', organic:18, natural:100},
+  {id:'hand-cream', name:'Softening Hand Cream', cat:'Body', sub:'Hand Care', size:'290 mL', price:28, vessel:'pump', tone:'cream', note:'Cocoa and shea butter in a cream that sinks in before you touch the door handle.', organic:14, natural:99},
+  {id:'body-cream', name:'Comforting Body Cream', cat:'Body', sub:'Body Cream & Oil', size:'190 mL', price:52, vessel:'pump', tone:'frost', note:'Aloe, sunflower and olive; the cream for skin that has had enough of the weather.', organic:20, natural:99},
+  {id:'clay-mask', name:'Mineral Clay Mask', cat:'Face', sub:'Masks & Exfoliators', size:'90 mL', price:54, vessel:'jar', tone:'stone', badge:'Fragrance-free', note:'Kaolin, montmorillonite and diatomaceous earth, with charcoal. No fragrance at all.', organic:16, natural:100},
+  {id:'face-oil',        name:'Replenishing Facial Oil',  cat:'Face', sub:'Facial Oils', size:'30 mL',  price:85, vessel:'dropper', tone:'clay',  note:'Jojoba and rosehip with sea buckthorn; four drops at night, a low glow by morning.', organic:62, natural:99},
+  {id:'argan-berry',     name:'Argan & Berry Facial Oil', cat:'Face', sub:'Facial Oils', size:'30 mL',  price:72, vessel:'dropper', tone:'kraft', note:'Argan and jojoba carrying northern berries — sea buckthorn, cloudberry, blueberry seed.', organic:63, natural:100},
+  {id:'face-cream',      name:'Restorative Face Cream',   cat:'Face', sub:'Moisturisers & Creams', size:'50 mL',  price:62, vessel:'pump',    tone:'cream', note:'Cocoa butter and argan, whipped rich; a cream for weather-worn skin.', organic:20, natural:99},
+  {id:'overnight-cream', name:'Soothing Overnight Cream', cat:'Face', sub:'Moisturisers & Creams', size:'50 mL',  price:57, vessel:'pump',    tone:'frost', badge:'Fragrance-free', note:'Aloe and mango butter, no fragrance at all; skin left calm by morning.', organic:42, natural:99},
+  {id:'cleansing-balm',  name:'Botanical Cleansing Balm', cat:'Face', sub:'Cleansers', size:'150 mL', price:58, vessel:'pump',    tone:'cream', note:'Sunflower and camomile; balm to milk, and the day comes away with it.', organic:39, natural:100},
+  {id:'cleansing-milk',  name:'Gentle Cleansing Milk',    cat:'Face', sub:'Cleansers', size:'190 mL', price:44, vessel:'pump',    tone:'frost', note:'Shea and argan in a milk that rinses clean, and strips nothing on the way out.', organic:15, natural:99},
+  {id:'body-oil',        name:'Nourishing Body Oil',      cat:'Body', sub:'Body Cream & Oil', size:'150 mL', price:59, vessel:'pump',    tone:'clay',  badge:'86% organic', note:'Sunflower, argan, rosehip and jojoba; dry to the touch before you finish dressing.', organic:86, natural:99},
+  {id:'body-polish',     name:'Volcanic Sand Body Polish',cat:'Body', sub:'Body Polish & Deodorant', size:'170 mL', price:40, vessel:'jar',     tone:'stone', note:'Volcanic sand milled fine as flour, carried in castor oil.', natural:99},
+  {id:'scalp-oil',       name:'Rosemary Scalp Oil',       cat:'Hair', sub:'Scalp Care', size:'30 mL',  price:34, vessel:'dropper', tone:'olive', note:'Rosemary and peppermint wake the scalp before washing; a cool prickle, then calm.', organic:69, natural:100},
+  {id:'gloss-shampoo-vetiver', name:'Gloss Shampoo, Smoky Green Vetiver', cat:'Hair', sub:'Shampoo', size:'400 mL', price:32, vessel:'pump', tone:'kraft', note:'Aloe on a gentle coco-sulfate base, with black tea and blueberry behind it; cedarwood carries the smoke.', organic:9, natural:98},
+  {id:'gloss-conditioner-vetiver', name:'Gloss Conditioner, Smoky Green Vetiver', cat:'Hair', sub:'Conditioner', size:'370 mL', price:32, vessel:'pump', tone:'kraft', note:'Avocado oil and panthenol close the cuticle; cedarwood and patchouli carry the smoke-green note.', natural:99},
+  {id:'deep-cleanse-scalp-scrub', name:'Deep Cleanse Scalp Scrub, Rosemary & Mint', cat:'Hair', sub:'Scalp Care', size:'170 mL', price:38, vessel:'pump', tone:'olive', note:'Sour cherry shell and kaolin lift buildup from the scalp; rosemary and peppermint leave a cool, clean prickle.', organic:7, natural:99},
+  {id:'urea-body-cream', name:'Urea & Panthenol Body Cream', cat:'Body', sub:'Body Cream & Oil', size:'280 mL', price:44, vessel:'pump', tone:'frost', note:'Sunflower oil bodied with panthenol and hyaluronic acid; 5% urea for rough, dry skin that needs more than a lotion.', natural:99},
+  {id:'roll-on-deodorant', name:'Roll-On Deodorant, Aluminum-Free', cat:'Body', sub:'Body Polish & Deodorant', size:'50 mL', price:26, vessel:'pump', tone:'sage', note:'Lavender and rosemary over aloe and panthenol; shikimic acid works at the source of odour.', natural:99},
+  {id:'silk-skin-hand-cream-spices-sandalwood', name:'Silk Skin Hand Cream, Spices & Sandalwood', cat:'Body', sub:'Hand Care', size:'270 mL', price:34, vessel:'pump', tone:'kraft', note:"Sunflower oil and cocoa seed butter, velvety and quick to absorb; cardamom and ginger over cedar and patchouli.", organic:15, natural:99},
+  {id:'sensitive-skin-face-body-cleanser', name:'Sensitive Skin Face & Body Cleanser', cat:'Body', sub:'Body Wash', size:'390 mL', price:38, vessel:'pump', tone:'frost', note:'Linden and jasmine flower extract over plum, in a minimalist wash gentle enough for the face.', natural:98},
+  {id:'retinol-alternative-moisturiser', name:'Retinol Alternative Moisturiser', cat:'Face', sub:'Moisturisers & Creams', size:'50 mL', price:58, vessel:'pump', tone:'cream', note:"Aloe and jojoba carry two percent Bidens pilosa — the supplier's retinol alternative — with sea buckthorn and rose myrtle behind it.", organic:23, natural:99},
+  {id:'glycolic-acid-exfoliating-toner', name:'Glycolic Acid Exfoliating Toner', cat:'Face', sub:'Toners', size:'250 mL', price:46, vessel:'pump', tone:'clay', note:'Five percent glycolic acid with cranberry and lingonberry extract behind it, evening out tone.'},
+  {id:'dry-shampoo-spray', name:'Quick Refresh Dry Shampoo Spray', cat:'Hair', sub:'Styling & Treatments', size:'100 mL', price:32, vessel:'pump', tone:'olive', note:'Echinacea and rhodiola in a fine mist that lifts sebum from the roots between washes.'},
+  {id:'peptide-eye-cream', name:'Peptide Age-Defying Eye Cream', cat:'Face', sub:'Eye Care', size:'15 mL', price:54, vessel:'pump', tone:'frost', note:'Hexapeptide-11 and ginkgo biloba, in a clinical-grade peptide complex light enough for the eye area.', organic:8, natural:99},
+  {id:'peptide-ageless-cream', name:'Peptide Ageless AM/PM Cream', cat:'Face', sub:'Moisturisers & Creams', size:'50 mL', price:64, vessel:'pump', tone:'cream', note:'Hexapeptide-11 with hydrolyzed hyaluronic acid and ginkgo biloba; a day-to-night firming cream.', organic:9, natural:99},
+  {id:'ferment-niacinamide-serum', name:'Ferment & Niacinamide Serum', cat:'Face', sub:'Serums', size:'30 mL', price:66, vessel:'dropper', tone:'clay', badge:'Fragrance-free', note:'Niacinamide and a ferment complex — Lactobacillus ferment and phospholipids — with centella asiatica behind it.'},
 
-  {id:'microbiome-face-mist', name:'Microbiome Prebiotics Face Mist', cat:'Face', size:'100 mL', price:42, vessel:'pump', tone:'sage', note:'A weightless prebiotic mist that hydrates, refreshes and helps protect the skin\'s own barrier.'},
-  {id:'prebiotics-jelly-serum', name:'Bioactive Prebiotics Jelly Serum', cat:'Face', size:'30 mL', price:52, vessel:'dropper', tone:'sage', note:'A lightweight jelly that supports the skin\'s protective barrier and leaves a soothed, radiant finish.'},
-  {id:'caffeine-gel-booster', name:'Caffeine Gel Booster', cat:'Face', size:'30 mL', price:38, vessel:'dropper', tone:'clay', note:'A gel concentrate with 1% caffeine to help decrease puffiness and freshen tired-looking skin.'},
-  {id:'ginkgo-gel-booster', name:'Antioxidant Ginkgo Gel Booster', cat:'Face', size:'30 mL', price:42, vessel:'dropper', tone:'clay', note:'A gel concentrate high in antioxidants, helping protect skin from pollution and free radicals.'},
-  {id:'double-hydration-gel', name:'Double Hydration Boost Gel + HA', cat:'Face', size:'30 mL', price:48, vessel:'dropper', tone:'frost', note:'A rejuvenating gel with multi-molecular-weight hyaluronic acid that locks in moisture and softens fine lines.'},
-  {id:'niacinamide-gel-moisturiser', name:'Niacinamide Gel Moisturiser', cat:'Face', size:'50 mL', price:56, vessel:'pump', tone:'cream', note:'A hydrating facial gel with 5% niacinamide that smooths texture and evens the look of skin tone.'},
-  {id:'oil-free-hydrating-gel', name:'Oil-Free Hydrating Gel', cat:'Face', size:'50 mL', price:54, vessel:'pump', tone:'frost', note:'A zero-oil face gel with hyaluronic acid and watercress extract for endless hydration.'},
-  {id:'retinol-alternative-eye-serum', name:'Retinol Alternative Eye Serum', cat:'Face', size:'15 mL', price:56, vessel:'dropper', tone:'clay', note:'Two percent Bidens pilosa around the eye, with horse chestnut, escin and borage seed oil behind it.'},
-  {id:'biphasic-makeup-remover', name:'BiPhasic Make-up Remover', cat:'Face', size:'100 mL', price:34, vessel:'pump', tone:'frost', badge:'Fragrance-free', note:'A fragrance-free two-phase remover; aloe, sea-buckthorn and camomile lift make-up clean.'},
-  {id:'cleansing-foam', name:'Cleansing Foam', cat:'Face', size:'150 mL', price:36, vessel:'pump', tone:'sage', note:'Rose water foams soft around calendula and camomile, lifting make-up and the day together.'},
-  {id:'brightening-eye-cream', name:'Brightening Eye Cream', cat:'Face', size:'15 mL', price:50, vessel:'pump', tone:'frost', note:'Sunflower and shea carry horse chestnut and ginkgo; hyaluronic acid meets the eye area.'},
-  {id:'purifying-toner', name:'Purifying Toner', cat:'Face', size:'200 mL', price:40, vessel:'pump', tone:'sage', badge:'Fragrance-free', note:'Lavender water and salicylic acid clear pores without a trace of fragrance.'},
-  {id:'hydrating-toner', name:'Hydrating Toner', cat:'Face', size:'200 mL', price:38, vessel:'pump', tone:'cream', badge:'Fragrance-free', note:'Rose water and hyaluronic acid restore what cleansing takes, fragrance-free.'},
-  {id:'micellar-cleansing-water', name:'Micellar Cleansing Water', cat:'Face', size:'200 mL', price:34, vessel:'pump', tone:'stone', note:'Micelles lift make-up in one pass; linden flower and camomile calm the skin behind it.'},
-  {id:'purifying-mousse', name:'Purifying Mousse', cat:'Face', size:'190 mL', price:36, vessel:'pump', tone:'olive', note:'An airy mousse dissolves sebum; blackberry, sweet flag and sage keep skin comfortable.'},
-  {id:'clarifying-gel', name:'Clarifying Gel', cat:'Face', size:'200 mL', price:34, vessel:'pump', tone:'kraft', note:'A clear aloe-based gel lathers soft and rinses clean; plum fruit extract is the only note.'},
-  {id:'anti-age-day-cream', name:'Anti-Age Day Cream', cat:'Face', size:'15 mL', price:56, vessel:'pump', tone:'cream', note:'Marine ferment and hyaluronic acid, with elder, lingonberry and echinacea, for firmer skin.'},
-  {id:'anti-age-night-cream', name:'Anti-Age Night Cream', cat:'Face', size:'50 mL', price:64, vessel:'pump', tone:'clay', note:'A marine ferment complex works overnight for firmer skin; cocoa and shea butter hydrate deeply.'},
-  {id:'ceramide-night-cream', name:'Ceramide Barrier Night Cream', cat:'Face', size:'50 mL', price:66, vessel:'pump', tone:'cream', note:'Glycosphingolipids support the skin barrier overnight; cocoa butter and peony root behind it.'},
-  {id:'hydrating-serum', name:'Hydrating Serum', cat:'Face', size:'30 mL', price:58, vessel:'dropper', tone:'clay', note:'A light serum with bisabolol and hyaluronic acid; cloudberry and peony extract behind it.'},
-  {id:'light-moisturising-day-cream', name:'Light Moisturising Day Cream', cat:'Face', size:'50 mL', price:54, vessel:'pump', tone:'frost', note:'A lightweight cream with hyaluronic acid and betaine; parsley and oak bark extract behind it.'},
-  {id:'moisturising-day-cream', name:'Moisturising Day Cream', cat:'Face', size:'15 mL', price:48, vessel:'pump', tone:'cream', note:'A silky, fast-absorbing cream with hyaluronic acid and bisabolol; rowanberry extract behind it.'},
-  {id:'peptide-anti-aging-serum', name:'Peptide Anti-Aging Serum', cat:'Face', size:'30 mL', price:68, vessel:'dropper', tone:'clay', note:'The same Hexapeptide-11 and ginkgo biloba complex as the eye and AM/PM creams, in a serum.'},
-  {id:'youthful-glow-serum', name:'Youthful Glow Serum', cat:'Face', size:'30 mL', price:62, vessel:'dropper', tone:'frost', note:'A quick-absorbing serum with hyaluronic acid and vitamin C; elder fruit extract behind it.'},
-  {id:'kojic-exfoliator', name:'Kojic Acid Face & Body Exfoliator', cat:'Face', size:'150 mL', price:54, vessel:'jar', tone:'stone', note:'Kojic acid and fine perlite polish away dead skin, face and body, with shea butter and jojoba oil to keep it gentle.'},
-  {id:'kojic-dark-spot-cream', name:'Dark Spot Face Cream with Kojic Acid', cat:'Face', size:'50 mL', price:59, vessel:'pump', tone:'clay', note:'Kojic acid targets dark spots and discoloration, with sea buckthorn and rosemary extract for antioxidant support.'},
-  {id:'kojic-dark-spot-serum', name:'Targeted Dark Spot Care, 1% Kojic Acid', cat:'Face', size:'15 mL', price:52, vessel:'dropper', tone:'clay', note:'A concentrated one percent kojic acid serum that targets dark spots directly, with sea buckthorn and rosemary behind it.'},
-  {id:'pigment-perfecting-serum', name:'Pigment Perfecting Serum', cat:'Face', size:'30 mL', price:64, vessel:'dropper', tone:'clay', note:'Alpha-arbutin and Bidens pilosa extract fade dark spots and even skin tone, on a lightweight hyaluronic-acid base.'},
-  {id:'vitamin-c-serum', name:'Vitamin C Serum', cat:'Face', size:'30 mL', price:58, vessel:'dropper', tone:'clay', note:'Two percent natural vitamin C and one percent ferulic acid brighten and firm, with sea buckthorn oil behind them.'},
-  {id:'aha-peeling-concentrate', name:'AHA Peeling Concentrate', cat:'Face', size:'30 mL', price:52, vessel:'dropper', tone:'frost', badge:'Fragrance-free', note:'Ten percent lactic acid resurfaces overnight, fragrance-free, with white tea and sage to keep skin comfortable.'},
+  {id:'microbiome-face-mist', name:'Microbiome Prebiotics Face Mist', cat:'Face', sub:'Mists & Boosters', size:'100 mL', price:42, vessel:'pump', tone:'sage', note:'A weightless prebiotic mist that hydrates, refreshes and helps protect the skin\'s own barrier.'},
+  {id:'prebiotics-jelly-serum', name:'Bioactive Prebiotics Jelly Serum', cat:'Face', sub:'Serums', size:'30 mL', price:52, vessel:'dropper', tone:'sage', note:'A lightweight jelly that supports the skin\'s protective barrier and leaves a soothed, radiant finish.'},
+  {id:'caffeine-gel-booster', name:'Caffeine Gel Booster', cat:'Face', sub:'Mists & Boosters', size:'30 mL', price:38, vessel:'dropper', tone:'clay', note:'A gel concentrate with 1% caffeine to help decrease puffiness and freshen tired-looking skin.'},
+  {id:'ginkgo-gel-booster', name:'Antioxidant Ginkgo Gel Booster', cat:'Face', sub:'Mists & Boosters', size:'30 mL', price:42, vessel:'dropper', tone:'clay', note:'A gel concentrate high in antioxidants, helping protect skin from pollution and free radicals.'},
+  {id:'double-hydration-gel', name:'Double Hydration Boost Gel + HA', cat:'Face', sub:'Moisturisers & Creams', size:'30 mL', price:48, vessel:'dropper', tone:'frost', note:'A rejuvenating gel with multi-molecular-weight hyaluronic acid that locks in moisture and softens fine lines.'},
+  {id:'niacinamide-gel-moisturiser', name:'Niacinamide Gel Moisturiser', cat:'Face', sub:'Moisturisers & Creams', size:'50 mL', price:56, vessel:'pump', tone:'cream', note:'A hydrating facial gel with 5% niacinamide that smooths texture and evens the look of skin tone.'},
+  {id:'oil-free-hydrating-gel', name:'Oil-Free Hydrating Gel', cat:'Face', sub:'Moisturisers & Creams', size:'50 mL', price:54, vessel:'pump', tone:'frost', note:'A zero-oil face gel with hyaluronic acid and watercress extract for endless hydration.'},
+  {id:'retinol-alternative-eye-serum', name:'Retinol Alternative Eye Serum', cat:'Face', sub:'Eye Care', size:'15 mL', price:56, vessel:'dropper', tone:'clay', note:'Two percent Bidens pilosa around the eye, with horse chestnut, escin and borage seed oil behind it.'},
+  {id:'biphasic-makeup-remover', name:'BiPhasic Make-up Remover', cat:'Face', sub:'Cleansers', size:'100 mL', price:34, vessel:'pump', tone:'frost', badge:'Fragrance-free', note:'A fragrance-free two-phase remover; aloe, sea-buckthorn and camomile lift make-up clean.'},
+  {id:'cleansing-foam', name:'Cleansing Foam', cat:'Face', sub:'Cleansers', size:'150 mL', price:36, vessel:'pump', tone:'sage', note:'Rose water foams soft around calendula and camomile, lifting make-up and the day together.'},
+  {id:'brightening-eye-cream', name:'Brightening Eye Cream', cat:'Face', sub:'Eye Care', size:'15 mL', price:50, vessel:'pump', tone:'frost', note:'Sunflower and shea carry horse chestnut and ginkgo; hyaluronic acid meets the eye area.'},
+  {id:'purifying-toner', name:'Purifying Toner', cat:'Face', sub:'Toners', size:'200 mL', price:40, vessel:'pump', tone:'sage', badge:'Fragrance-free', note:'Lavender water and salicylic acid clear pores without a trace of fragrance.'},
+  {id:'hydrating-toner', name:'Hydrating Toner', cat:'Face', sub:'Toners', size:'200 mL', price:38, vessel:'pump', tone:'cream', badge:'Fragrance-free', note:'Rose water and hyaluronic acid restore what cleansing takes, fragrance-free.'},
+  {id:'micellar-cleansing-water', name:'Micellar Cleansing Water', cat:'Face', sub:'Cleansers', size:'200 mL', price:34, vessel:'pump', tone:'stone', note:'Micelles lift make-up in one pass; linden flower and camomile calm the skin behind it.'},
+  {id:'purifying-mousse', name:'Purifying Mousse', cat:'Face', sub:'Cleansers', size:'190 mL', price:36, vessel:'pump', tone:'olive', note:'An airy mousse dissolves sebum; blackberry, sweet flag and sage keep skin comfortable.'},
+  {id:'clarifying-gel', name:'Clarifying Gel', cat:'Face', sub:'Cleansers', size:'200 mL', price:34, vessel:'pump', tone:'kraft', note:'A clear aloe-based gel lathers soft and rinses clean; plum fruit extract is the only note.'},
+  {id:'anti-age-day-cream', name:'Anti-Age Day Cream', cat:'Face', sub:'Moisturisers & Creams', size:'15 mL', price:56, vessel:'pump', tone:'cream', note:'Marine ferment and hyaluronic acid, with elder, lingonberry and echinacea, for firmer skin.'},
+  {id:'anti-age-night-cream', name:'Anti-Age Night Cream', cat:'Face', sub:'Moisturisers & Creams', size:'50 mL', price:64, vessel:'pump', tone:'clay', note:'A marine ferment complex works overnight for firmer skin; cocoa and shea butter hydrate deeply.'},
+  {id:'ceramide-night-cream', name:'Ceramide Barrier Night Cream', cat:'Face', sub:'Moisturisers & Creams', size:'50 mL', price:66, vessel:'pump', tone:'cream', note:'Glycosphingolipids support the skin barrier overnight; cocoa butter and peony root behind it.'},
+  {id:'hydrating-serum', name:'Hydrating Serum', cat:'Face', sub:'Serums', size:'30 mL', price:58, vessel:'dropper', tone:'clay', note:'A light serum with bisabolol and hyaluronic acid; cloudberry and peony extract behind it.'},
+  {id:'light-moisturising-day-cream', name:'Light Moisturising Day Cream', cat:'Face', sub:'Moisturisers & Creams', size:'50 mL', price:54, vessel:'pump', tone:'frost', note:'A lightweight cream with hyaluronic acid and betaine; parsley and oak bark extract behind it.'},
+  {id:'moisturising-day-cream', name:'Moisturising Day Cream', cat:'Face', sub:'Moisturisers & Creams', size:'15 mL', price:48, vessel:'pump', tone:'cream', note:'A silky, fast-absorbing cream with hyaluronic acid and bisabolol; rowanberry extract behind it.'},
+  {id:'peptide-anti-aging-serum', name:'Peptide Anti-Aging Serum', cat:'Face', sub:'Serums', size:'30 mL', price:68, vessel:'dropper', tone:'clay', note:'The same Hexapeptide-11 and ginkgo biloba complex as the eye and AM/PM creams, in a serum.'},
+  {id:'youthful-glow-serum', name:'Youthful Glow Serum', cat:'Face', sub:'Serums', size:'30 mL', price:62, vessel:'dropper', tone:'frost', note:'A quick-absorbing serum with hyaluronic acid and vitamin C; elder fruit extract behind it.'},
+  {id:'kojic-exfoliator', name:'Kojic Acid Face & Body Exfoliator', cat:'Face', sub:'Masks & Exfoliators', size:'150 mL', price:54, vessel:'jar', tone:'stone', note:'Kojic acid and fine perlite polish away dead skin, face and body, with shea butter and jojoba oil to keep it gentle.'},
+  {id:'kojic-dark-spot-cream', name:'Dark Spot Face Cream with Kojic Acid', cat:'Face', sub:'Moisturisers & Creams', size:'50 mL', price:59, vessel:'pump', tone:'clay', note:'Kojic acid targets dark spots and discoloration, with sea buckthorn and rosemary extract for antioxidant support.'},
+  {id:'kojic-dark-spot-serum', name:'Targeted Dark Spot Care, 1% Kojic Acid', cat:'Face', sub:'Serums', size:'15 mL', price:52, vessel:'dropper', tone:'clay', note:'A concentrated one percent kojic acid serum that targets dark spots directly, with sea buckthorn and rosemary behind it.'},
+  {id:'pigment-perfecting-serum', name:'Pigment Perfecting Serum', cat:'Face', sub:'Serums', size:'30 mL', price:64, vessel:'dropper', tone:'clay', note:'Alpha-arbutin and Bidens pilosa extract fade dark spots and even skin tone, on a lightweight hyaluronic-acid base.'},
+  {id:'vitamin-c-serum', name:'Vitamin C Serum', cat:'Face', sub:'Serums', size:'30 mL', price:58, vessel:'dropper', tone:'clay', note:'Two percent natural vitamin C and one percent ferulic acid brighten and firm, with sea buckthorn oil behind them.'},
+  {id:'aha-peeling-concentrate', name:'AHA Peeling Concentrate', cat:'Face', sub:'Masks & Exfoliators', size:'30 mL', price:52, vessel:'dropper', tone:'frost', badge:'Fragrance-free', note:'Ten percent lactic acid resurfaces overnight, fragrance-free, with white tea and sage to keep skin comfortable.'},
 
-  {id:'keratin-volume-boost-conditioner', name:'Keratin Volume Boost Conditioner', cat:'Hair', size:'390 mL', price:34, vessel:'pump', tone:'olive', note:'A volumizing conditioner with hydrolyzed keratin and caffeine, smoothing and detangling for visibly fuller hair.'},
-  {id:'keratin-volume-boost-shampoo', name:'Keratin Volume Boost Shampoo', cat:'Hair', size:'390 mL', price:34, vessel:'pump', tone:'olive', note:'A volumizing shampoo with hydrolyzed keratin and caffeine that purifies and reactivates the scalp for fuller-looking hair.'},
-  {id:'keratin-shine-leave-in-mist', name:'Keratin Shine Leave-In Hair Mist', cat:'Hair', size:'100 mL', price:36, vessel:'pump', tone:'frost', note:'A lightweight leave-in mist with hydrolyzed keratin and red algae extract to smooth, strengthen and detangle damaged hair.'},
-  {id:'keratin-intensive-rescue-mask', name:'Keratin Intensive Rescue Hair Mask', cat:'Hair', size:'170 mL', price:40, vessel:'pump', tone:'kraft', note:'An intensive hair mask with hydrolyzed keratin, wheat proteins and shea butter to reinforce structure and add shine.'},
-  {id:'sensitive-scalp-shampoo', name:'Sensitive Scalp Shampoo', cat:'Hair', size:'400 mL', price:34, vessel:'pump', tone:'frost', note:'A gentle shampoo for dry and sensitive scalps, with plum, linden and jasmine — the hair companion to the sensitive skin line.'},
-  {id:'fresh-conditioner-citrus-cocktail', name:'Fresh Conditioner, Citrus Cocktail', cat:'Hair', size:'370 mL', price:32, vessel:'pump', tone:'sage', note:'A citrus-cocktail conditioner for the ends, with panthenol to ease styling and reduce breakage and split ends.'},
-  {id:'moisturising-shampoo', name:'Moisturising Shampoo', cat:'Hair', size:'290 mL', price:30, vessel:'pump', tone:'clay', note:'A gentle, moisturising shampoo with sea kale, ginkgo and burdock root extracts that smooths hair and adds gloss.'},
-  {id:'silk-skin-body-serum-woody-amber-leather', name:'Silk Skin Body Serum, Woody Amber & Leather', cat:'Body', size:'270 mL', price:34, vessel:'pump', tone:'kraft', note:'Jojoba and rosehip oils absorb fast for deep hydration, with hyaluronic acid and ginkgo biloba behind them.'},
-  {id:'silk-skin-body-serum-spices-sandalwood', name:'Silk Skin Body Serum, Spices & Sandalwood', cat:'Body', size:'270 mL', price:34, vessel:'pump', tone:'kraft', note:'The same fast-absorbing jojoba-and-rosehip base as its sibling, in a citrus, cardamom and sandalwood aroma.'},
-  {id:'silk-skin-hand-cream-woody-amber-leather', name:'Silk Skin Hand Cream, Woody Amber & Leather', cat:'Body', size:'270 mL', price:34, vessel:'pump', tone:'kraft', note:'Sunflower oil and cocoa seed butter, velvety and quick to absorb; vanilla and patchouli over a leather-like base.'},
-  {id:'sensitive-skin-body-cream', name:'Sensitive Skin Body Cream', cat:'Body', size:'190 mL', price:38, vessel:'pump', tone:'frost', note:'Shea and cocoa butters for daily hydration, with linden, jasmine and plum extracts, calmed for sensitive skin.'},
-  {id:'hand-body-wash-grapefruit', name:'Hand & Body Wash, Grapefruit', cat:'Body', size:'490 mL', price:30, vessel:'pump', tone:'sage', note:'A gentle coco-sulfate cleanse with blueberry fruit extract, in a bright, energising grapefruit aroma.'},
-  {id:'hand-body-wash-peppermint-dark-cedar', name:'Hand & Body Wash, Peppermint & Dark Cedar', cat:'Body', size:'490 mL', price:30, vessel:'pump', tone:'olive', note:'Hydrating betaine and quince fruit extract behind a gentle cleanse, in a fresh mint-and-cedarwood aroma.'},
-  {id:'hand-body-wash-ginger-smoky-cardamom', name:'Hand & Body Wash, Ginger & Smoky Cardamom', cat:'Body', size:'490 mL', price:30, vessel:'pump', tone:'olive', note:'The same betaine-and-quince cleanse as its siblings, in a warm ginger-and-cardamom aroma.'},
-  {id:'hand-body-wash-patchouli-amber-vanilla', name:'Hand & Body Wash, Patchouli & Amber Vanilla', cat:'Body', size:'490 mL', price:30, vessel:'pump', tone:'kraft', note:'The same betaine-and-quince cleanse as its siblings, in a sweet vanilla, amber and patchouli aroma.'},
-  {id:'blemish-purifying-face-wash', name:'Blemish Purifying Face Wash', cat:'Face', size:'140 mL', price:38, vessel:'pump', tone:'sage', note:'A pH-balanced face wash for blemish-prone skin, with mate leaf, Iceland moss and juniper callus extract to purify without stripping.'},
-  {id:'blemish-care-moisturiser', name:'Blemish Care Moisturiser', cat:'Face', size:'50 mL', price:58, vessel:'pump', tone:'clay', note:'A lightweight moisturiser for blemish-prone skin, with argan oil and hyaluronic acid, plus mate leaf, Iceland moss and juniper behind them.'},
-  {id:'radiant-glow-facial-wash', name:'Radiant Glow Facial Wash', cat:'Face', size:'145 mL', price:36, vessel:'pump', tone:'stone', note:'A gentle facial wash that dissolves make-up and impurities, with aloe juice and blackberry fruit extract behind it for radiance.'},
-  {id:'scalp-care-exfoliating-serum', name:'Scalp Care Exfoliating Serum', cat:'Hair', size:'30 mL', price:36, vessel:'dropper', tone:'frost', badge:'Fragrance-free', note:'A fragrance-free scalp serum with lactic acid to gently exfoliate, and sodium hyaluronate and nettle leaf extract to keep the scalp comfortable.'},
+  {id:'keratin-volume-boost-conditioner', name:'Keratin Volume Boost Conditioner', cat:'Hair', sub:'Conditioner', size:'390 mL', price:34, vessel:'pump', tone:'olive', note:'A volumizing conditioner with hydrolyzed keratin and caffeine, smoothing and detangling for visibly fuller hair.'},
+  {id:'keratin-volume-boost-shampoo', name:'Keratin Volume Boost Shampoo', cat:'Hair', sub:'Shampoo', size:'390 mL', price:34, vessel:'pump', tone:'olive', note:'A volumizing shampoo with hydrolyzed keratin and caffeine that purifies and reactivates the scalp for fuller-looking hair.'},
+  {id:'keratin-shine-leave-in-mist', name:'Keratin Shine Leave-In Hair Mist', cat:'Hair', sub:'Styling & Treatments', size:'100 mL', price:36, vessel:'pump', tone:'frost', note:'A lightweight leave-in mist with hydrolyzed keratin and red algae extract to smooth, strengthen and detangle damaged hair.'},
+  {id:'keratin-intensive-rescue-mask', name:'Keratin Intensive Rescue Hair Mask', cat:'Hair', sub:'Styling & Treatments', size:'170 mL', price:40, vessel:'pump', tone:'kraft', note:'An intensive hair mask with hydrolyzed keratin, wheat proteins and shea butter to reinforce structure and add shine.'},
+  {id:'sensitive-scalp-shampoo', name:'Sensitive Scalp Shampoo', cat:'Hair', sub:'Shampoo', size:'400 mL', price:34, vessel:'pump', tone:'frost', note:'A gentle shampoo for dry and sensitive scalps, with plum, linden and jasmine — the hair companion to the sensitive skin line.'},
+  {id:'fresh-conditioner-citrus-cocktail', name:'Fresh Conditioner, Citrus Cocktail', cat:'Hair', sub:'Conditioner', size:'370 mL', price:32, vessel:'pump', tone:'sage', note:'A citrus-cocktail conditioner for the ends, with panthenol to ease styling and reduce breakage and split ends.'},
+  {id:'moisturising-shampoo', name:'Moisturising Shampoo', cat:'Hair', sub:'Shampoo', size:'290 mL', price:30, vessel:'pump', tone:'clay', note:'A gentle, moisturising shampoo with sea kale, ginkgo and burdock root extracts that smooths hair and adds gloss.'},
+  {id:'silk-skin-body-serum-woody-amber-leather', name:'Silk Skin Body Serum, Woody Amber & Leather', cat:'Body', sub:'Body Cream & Oil', size:'270 mL', price:34, vessel:'pump', tone:'kraft', note:'Jojoba and rosehip oils absorb fast for deep hydration, with hyaluronic acid and ginkgo biloba behind them.'},
+  {id:'silk-skin-body-serum-spices-sandalwood', name:'Silk Skin Body Serum, Spices & Sandalwood', cat:'Body', sub:'Body Cream & Oil', size:'270 mL', price:34, vessel:'pump', tone:'kraft', note:'The same fast-absorbing jojoba-and-rosehip base as its sibling, in a citrus, cardamom and sandalwood aroma.'},
+  {id:'silk-skin-hand-cream-woody-amber-leather', name:'Silk Skin Hand Cream, Woody Amber & Leather', cat:'Body', sub:'Hand Care', size:'270 mL', price:34, vessel:'pump', tone:'kraft', note:'Sunflower oil and cocoa seed butter, velvety and quick to absorb; vanilla and patchouli over a leather-like base.'},
+  {id:'sensitive-skin-body-cream', name:'Sensitive Skin Body Cream', cat:'Body', sub:'Body Cream & Oil', size:'190 mL', price:38, vessel:'pump', tone:'frost', note:'Shea and cocoa butters for daily hydration, with linden, jasmine and plum extracts, calmed for sensitive skin.'},
+  {id:'hand-body-wash-grapefruit', name:'Hand & Body Wash, Grapefruit', cat:'Body', sub:'Body Wash', size:'490 mL', price:30, vessel:'pump', tone:'sage', note:'A gentle coco-sulfate cleanse with blueberry fruit extract, in a bright, energising grapefruit aroma.'},
+  {id:'hand-body-wash-peppermint-dark-cedar', name:'Hand & Body Wash, Peppermint & Dark Cedar', cat:'Body', sub:'Body Wash', size:'490 mL', price:30, vessel:'pump', tone:'olive', note:'Hydrating betaine and quince fruit extract behind a gentle cleanse, in a fresh mint-and-cedarwood aroma.'},
+  {id:'hand-body-wash-ginger-smoky-cardamom', name:'Hand & Body Wash, Ginger & Smoky Cardamom', cat:'Body', sub:'Body Wash', size:'490 mL', price:30, vessel:'pump', tone:'olive', note:'The same betaine-and-quince cleanse as its siblings, in a warm ginger-and-cardamom aroma.'},
+  {id:'hand-body-wash-patchouli-amber-vanilla', name:'Hand & Body Wash, Patchouli & Amber Vanilla', cat:'Body', sub:'Body Wash', size:'490 mL', price:30, vessel:'pump', tone:'kraft', note:'The same betaine-and-quince cleanse as its siblings, in a sweet vanilla, amber and patchouli aroma.'},
+  {id:'blemish-purifying-face-wash', name:'Blemish Purifying Face Wash', cat:'Face', sub:'Cleansers', size:'140 mL', price:38, vessel:'pump', tone:'sage', note:'A pH-balanced face wash for blemish-prone skin, with mate leaf, Iceland moss and juniper callus extract to purify without stripping.'},
+  {id:'blemish-care-moisturiser', name:'Blemish Care Moisturiser', cat:'Face', sub:'Moisturisers & Creams', size:'50 mL', price:58, vessel:'pump', tone:'clay', note:'A lightweight moisturiser for blemish-prone skin, with argan oil and hyaluronic acid, plus mate leaf, Iceland moss and juniper behind them.'},
+  {id:'radiant-glow-facial-wash', name:'Radiant Glow Facial Wash', cat:'Face', sub:'Cleansers', size:'145 mL', price:36, vessel:'pump', tone:'stone', note:'A gentle facial wash that dissolves make-up and impurities, with aloe juice and blackberry fruit extract behind it for radiance.'},
+  {id:'scalp-care-exfoliating-serum', name:'Scalp Care Exfoliating Serum', cat:'Hair', sub:'Scalp Care', size:'30 mL', price:36, vessel:'dropper', tone:'frost', badge:'Fragrance-free', note:'A fragrance-free scalp serum with lactic acid to gently exfoliate, and sodium hyaluronate and nettle leaf extract to keep the scalp comfortable.'},
 ];
 
 /* Curated gift/ritual sets — drive AOV */
@@ -1881,16 +1888,35 @@ const CHAPTERS = [
    inter:{img:'campaign/adama-rite-14-roots', cap:'Roots, and what they are given.'}},
 ];
 const chapterItems = ch => CATALOG.filter(p=>p.cat===ch.cat);
+/* Sub-chapters read in routine order (cleanse → treat → seal), not alphabetically — the
+   same "one method" logic the Face chapter line already states. A 47-product Face chapter
+   with no further structure is a wall; these headings are organisation, not a filter —
+   every product stays visible, matching the Aesop always-fully-visible pattern above. */
+const SUB_ORDER = [
+  'Cleansers','Toners','Serums','Facial Oils','Moisturisers & Creams','Eye Care',
+  'Masks & Exfoliators','Mists & Boosters',
+  'Body Wash','Body Cream & Oil','Hand Care','Body Polish & Deodorant',
+  'Shampoo','Conditioner','Scalp Care','Styling & Treatments',
+];
+function subGroups(items){
+  const bySub = new Map();
+  items.forEach(p=>{ const k=p.sub||''; if(!bySub.has(k)) bySub.set(k,[]); bySub.get(k).push(p); });
+  return SUB_ORDER.filter(s=>bySub.has(s)).map(s=>({sub:s, items:bySub.get(s)}));
+}
 
 function galleryHTML(){
   return CHAPTERS.map(ch=>{
     const items = chapterItems(ch);
+    const groups = subGroups(items);
     return `<div class="shop-chapter" id="shop-${ch.cat.toLowerCase()}">
     <header class="chapter-head rv">
       <h3 class="eyebrow">${ch.title} · ${items.length} formulation${items.length===1?'':'s'}</h3>
       <p class="chapter-line">${ch.line}</p>
     </header>
-    <div class="chapter-grid">${items.map(productCard).join('')}</div>
+    ${groups.map(g=>`<div class="sub-chapter">
+      <h4 class="sub-chapter__head">${g.sub} <span class="sub-chapter__count">${g.items.length}</span></h4>
+      <div class="chapter-grid">${g.items.map(productCard).join('')}</div>
+    </div>`).join('')}
     ${ch.inter?`<figure class="shop-inter rv"><img src="assets/img/${ch.inter.img}-600.webp?v=95" srcset="assets/img/${ch.inter.img}-600.webp?v=95 600w, assets/img/${ch.inter.img}.webp?v=95 1100w" sizes="(max-width:760px) 92vw, 1080px" alt="${ch.inter.cap}" loading="lazy" decoding="async" width="1024" height="1536"><figcaption>${ch.inter.cap}</figcaption></figure>`:''}
   </div>`;
   }).join('');
@@ -1901,11 +1927,8 @@ function galleryHTML(){
 function indexHTML(){
   return CHAPTERS.map(ch=>{
     const items = chapterItems(ch);
-    return `<div class="shop-chapter" id="shop-${ch.cat.toLowerCase()}">
-    <header class="chapter-head">
-      <h3 class="eyebrow">${ch.title} · ${items.length} formulations</h3>
-    </header>
-    <div class="register">${items.map(p=>{
+    const groups = subGroups(items);
+    const row = p=>{
       const b = BOTANY[p.id];
       const lat = b ? (b[2]==='plant' ? `<em>${b[1]}</em>` : b[1]) : '';
       return `<button class="reg-row" type="button" data-view="${p.id}">
@@ -1914,7 +1937,15 @@ function indexHTML(){
         <span class="reg-size">${p.size}</span>
         <span class="reg-price">${money(p.price)}</span>
       </button>`;
-    }).join('')}</div>
+    };
+    return `<div class="shop-chapter" id="shop-${ch.cat.toLowerCase()}">
+    <header class="chapter-head">
+      <h3 class="eyebrow">${ch.title} · ${items.length} formulations</h3>
+    </header>
+    ${groups.map(g=>`<div class="sub-chapter">
+      <h4 class="sub-chapter__head">${g.sub} <span class="sub-chapter__count">${g.items.length}</span></h4>
+      <div class="register">${g.items.map(row).join('')}</div>
+    </div>`).join('')}
   </div>`;
   }).join('');
 }
